@@ -6,5 +6,9 @@ public class Character {
 	Itens[] bag;
 	Itens rightHand, leftHand, head, body;
 	
+	Character(){
+		
+	}
+	
 	
 }

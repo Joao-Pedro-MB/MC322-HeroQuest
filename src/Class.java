@@ -1,4 +1,4 @@
 
 public enum Class {
-	BARBARIAN, MIDGET, ELF, MAGE
+	 MAGE, BARBARIAN, ELF, MIDGET
 }
