@@ -1,4 +1,4 @@
-
+package itens;
 public class Weapon extends Itens{
 	
 	int range, attackBonus, hands;

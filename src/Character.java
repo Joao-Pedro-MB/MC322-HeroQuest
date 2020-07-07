@@ -1,3 +1,4 @@
+import itens.Itens;
 
 public class Character {
 	

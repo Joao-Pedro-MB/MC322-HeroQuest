@@ -1,8 +1,8 @@
 package heroi;
 
-public class Feiticeiro extends Heroi{
+public class Mago extends Heroi{
 
-	public Feiticeiro (String nome) {
+	public Mago (String nome) {
 		super(nome, 1, 2, 4, 6);
 		this.addArma("Punhal");
 		this.addArma("Punhal");
