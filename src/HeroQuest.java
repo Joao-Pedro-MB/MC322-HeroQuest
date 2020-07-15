@@ -45,9 +45,9 @@ public class HeroQuest {
 		int[] pos = {0,0};
 		String comando = "a";
 		boolean ruuning = true;
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(30);
 		Heroi heroi = criarPersonagem();
-		mapa.addHeroi(pos);
+		mapa.addHeroi(pos, heroi);
 		System.out.println("Para onde irá se mover:");
 		mapa.printMap();
 		
@@ -58,7 +58,7 @@ public class HeroQuest {
 			System.out.println("Para onde irá se mover:");
 			comando = menu.nextLine();
 			pos = heroi.move(comando);
-			mapa.addHeroi(pos);
+			mapa.addHeroi(pos, heroi);
 			mapa.printMap();
 		}
 		

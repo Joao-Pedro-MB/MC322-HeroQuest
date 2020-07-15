@@ -1,9 +1,10 @@
 package heroi;
 import itens.*;
+import mapa.Prop;
 
 
 
-public class Heroi {
+public class Heroi extends Prop {
 	private String nome;
 	private int dadosAtaque, dadosAtaqueArma, dadosDefesa;
 	private int pontosVida, pontosInteligencia, moedasOuro;
