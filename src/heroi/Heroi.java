@@ -24,6 +24,7 @@ public class Heroi extends Prop {
 	
 	
 	public Heroi(String nome, int dadosAtaque, int dadosDefesa, int pontosVida, int pontosInteligencia) {
+		super("HH", 0, 0);
 		this.nome = nome; 
 		this.dadosAtaque = dadosAtaque;
 		this.dadosDefesa = dadosDefesa;
