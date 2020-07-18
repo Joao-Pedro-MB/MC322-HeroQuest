@@ -2,15 +2,20 @@ package mapa;
 
 public class Mapa {
 	Prop[][] map;
-	int size;
+	String[][] wallmap;
+	int lineLength;
+	int collumnLength;
 	int heroiX = 0, heroiY = 0;
 	
-	public Mapa(int n){
-		this.size = n;
-		this.map = new Prop[n][n];
-		for (int i = 0 ; i < n ; i++) {
-			for (int j = 0 ; j < n ; j++) {
+	public Mapa(int lineLength, int collumnLength){
+		this.lineLength = lineLength;
+		this.collumnLength = collumnLength;
+		this.map = new Prop[lineLength][collumnLength];
+		this.wallmap = new String[lineLength][collumnLength];	
+		for (int i = 0 ; i < lineLength ; i++) {
+			for (int j = 0 ; j < collumnLength ; j++) {
 				this.map[i][j] = null;
+				this.wallmap[i][j] = "";
 			}
 		}
 	}
@@ -31,6 +36,10 @@ public class Mapa {
 		}
 	}
 	
+	public void includeWall(int positionX, int positionY, String opcao) {
+		wallmap[positionX][positionY] = opcao;
+	}
+	
 	//imprime mapa de itens
 	public void printMap () {
 		System.out.println();
@@ -41,8 +50,25 @@ public class Mapa {
 					this.map[i][j].print();
 				}
 				catch(NullPointerException e) {
-					System.out.printf("--");
+					System.out.printf("░░");
 				}
+				
+				if(wallmap[i][j].equals("lado") || wallmap[i][j].equals("baixolado")) {
+					System.out.printf("║");
+				}
+				else {
+					System.out.printf(" ");
+				}
+			}
+			System.out.println();
+			for(int j = 0; j < map[0].length ; j++) {
+				if(wallmap[i][j].equals("baixo") || wallmap[i][j].equals("baixolado")) {
+					System.out.printf("==");
+				}
+				else {
+					System.out.printf("  ");
+				}
+				System.out.printf(" ");
 			}
 			System.out.println();
 		}

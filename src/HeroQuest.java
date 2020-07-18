@@ -1,11 +1,7 @@
 import java.util.Scanner;
 import heroi.*;
 import mapa.*;
-import props.Prop;
-import props.Prop;
-import props.Prop;
-import props.Prop;
-import props.Prop;
+import mapa.Prop;
 
 import java.util.InputMismatchException;
 public class HeroQuest {
@@ -51,34 +47,13 @@ public class HeroQuest {
 		int[] pos = {0,0};
 		String comando = "a";
 		boolean ruuning = true;
-		Mapa mapa = new Mapa(28);
+		Mapa mapa = new Mapa(19,27);
 		Heroi heroi = criarPersonagem();
 		mapa.addHeroi(pos, heroi);
-		for(int i = 0 ; i < 28 ; i++) {
-			mapa.includeItem(new Prop("XX", 5, i));
-		}
-		for(int i = 0 ; i < 28 ; i++) {
-			mapa.includeItem(new Prop("XX", 10, i));
-		}
-		for(int i = 0 ; i < 28 ; i++) {
-			mapa.includeItem(new Prop("XX", 15, i));
-		}
-		for(int i = 0 ; i < 28 ; i++) {
-			mapa.includeItem(new Prop("XX", 20, i));
-		}
 		
-		for(int i = 0 ; i < 28 ; i++) {
-			mapa.includeItem(new Prop("XX", i, 5));
-		}
-		for(int i = 0 ; i < 28 ; i++) {
-			mapa.includeItem(new Prop("XX", i, 10));
-		}
-		for(int i = 0 ; i < 28 ; i++) {
-			mapa.includeItem(new Prop("XX", i, 15));
-		}
-		for(int i = 0 ; i < 28 ; i++) {
-			mapa.includeItem(new Prop("XX", i, 20));
-		}
+		DefaultMap defaultmap = new DefaultMap(mapa);
+		defaultmap.generateDefaultMap();
+		
 		
 
 		
