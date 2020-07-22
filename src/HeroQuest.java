@@ -47,7 +47,7 @@ public class HeroQuest {
 		int[] pos = {0,0};
 		String comando = "a";
 		boolean ruuning = true;
-		Mapa mapa = new Mapa(19,27);
+		Mapa mapa = new Mapa(12,27);
 		Heroi heroi = criarPersonagem();
 		mapa.addHeroi(pos, heroi);
 		
@@ -63,12 +63,19 @@ public class HeroQuest {
 		
 		
 		while(comando != "e") {
+			//remove o heroi do mapa
 			mapa.removeHeroi();
-			System.out.println("Para onde irá se mover:");
-			comando = menu.nextLine();
+			//lê o movimento do jogador
+			System.out.println("Qual sua ação?:");
+			comando = menu.nextLine();	
+			//movimenta o heroi
 			pos = heroi.move(comando);
+			//adiciona heroi na nova posição
 			mapa.addHeroi(pos, heroi);
+			//imprime Mapa
 			mapa.printMap();
+			//imprime status do herói
+			heroi.printStatus();
 		}
 		
 		menu.close();

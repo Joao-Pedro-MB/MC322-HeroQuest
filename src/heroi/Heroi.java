@@ -66,6 +66,10 @@ public class Heroi extends Prop {
 		}
 	}
 	
+	public void printStatus() {
+		System.out.println("Jogador(a): " + nome + ", Arma1: " + atualArma1 + " Arma 2: " + atualArma1 + ", Vida: " + pontosVida + ", ouro: " + moedasOuro);
+	}
+	
 	//TODO
 	public void EquipaArma(String Arma) {
 		
