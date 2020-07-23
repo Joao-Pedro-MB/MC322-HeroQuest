@@ -12,7 +12,7 @@ public class HeroQuest {
 		
 		System.out.print("##----Escolha uma classe-----##\n\n");
 		System.out.print("|-----------------------------|\n");
-		System.out.print("| Opção 1 - Mago              |\n");
+		System.out.print("| Opção 1 - Feiticeiro        |\n");
 		System.out.print("| Opção 2 - Bárbaro           |\n");
 		System.out.print("| Opção 3 - Elfo              |\n");
 		System.out.print("| Opção 4 - Anão              |\n");
@@ -25,6 +25,7 @@ public class HeroQuest {
 			classe = 1;
 			System.out.printf("Vejo que não segue instruções, pois entã será um Bárbaro");
 		}
+		System.out.println("A"+classe+"A");
 		System.out.println();
 		System.out.print("##-Qual o nome do Personagem?-##");
 		String buffer = menu.nextLine();
@@ -32,15 +33,21 @@ public class HeroQuest {
 		
 		switch(classe) {
 		case 1:
-			heroi = new Mago(nome);
+			System.out.println("Feiticeiro");
+			heroi = new Feiticeiro(nome);
+			return heroi;
 		case 2:
 			heroi = new Barbaro(nome);
+			return heroi;
 		case 3:
 			heroi = new Elfo(nome);
+			return heroi;
 		case 4:
 			heroi = new Anao(nome);
+			return heroi;
+		default:
+			return heroi;
 		}
-		return heroi;
 	}
 	
 	public static void main(String[] args) {

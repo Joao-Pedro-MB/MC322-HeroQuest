@@ -1,6 +1,7 @@
 package heroi;
+import java.util.ArrayList;
 import java.util.Scanner;
-import itens.*;
+import itens.Arma;
 import mapa.*;
 
 
@@ -14,28 +15,25 @@ public class Heroi extends Prop {
 	// Current Armor
 	// Current Arma 1
 	// Current Arma 2	
-	private String[] Armas;
+	private ArrayList<Arma> Armas = new ArrayList<Arma>();
 	private String[] Armaduras;
-	private String[] Pocoes;
-	private String[] Itens;
-	private String[] Magias;
-	private String atualArmadura;
-	private String atualArma1;
-	private String atualArma2;
+	private ArrayList<String> Pocoes = new ArrayList<String>();
+	private ArrayList<String> Itens = new ArrayList<String>();
+	private String atualArmadura, atualArma1 = "punho", atualArma2 = "punho", classe;
+
 	
 	
-	public Heroi(String nome, int dadosAtaque, int dadosDefesa, int pontosVida, int pontosInteligencia) {
+	public Heroi(String nome, String classe, int dadosAtaque, int dadosDefesa, int pontosVida, int pontosInteligencia) {
 		super("HH", 0, 0);
+		this.classe = classe;
 		this.nome = nome; 
 		this.dadosAtaque = dadosAtaque;
 		this.dadosDefesa = dadosDefesa;
 		this.pontosVida = pontosVida;
 		this.pontosInteligencia = pontosInteligencia;
-		this.Armas = new String[10];
 		this.Armaduras = new String[10];
-		this.Pocoes = new String[10];
-		this.Itens = new String[10];
-		this.Magias = new String[10];
+		this.Itens.add("item1");
+		this.Pocoes.add("pocao1");
 		
 	}
 	
@@ -59,7 +57,7 @@ public class Heroi extends Prop {
 				return;
 			case "3":
 				System.out.println("Você quer usar Item");
-				usaItem(mapa);
+				usaItem();
 				return;
 			case "4":
 				System.out.println("Você quer buscar Itens");
@@ -84,10 +82,13 @@ public class Heroi extends Prop {
 		}
 	}
 	
-	private void usaItem(Mapa mapa) {
-		for (String item : Itens) {
-			System.out.println(item);
-		}
+	private void usaItem() {
+		for(String item:Itens) {
+            System.out.println(item);
+        } 
+		for(String pocoes:Pocoes) {
+            System.out.println(pocoes);
+        }
 	}
 	
 	private void buscaItem(Mapa mapa) {
@@ -104,7 +105,7 @@ public class Heroi extends Prop {
 	public void movimenta(Mapa mapa) {
 		Scanner acao = new Scanner (System.in);
 		Dice dice = new Dice();
-		int moves = dice.rollDice(1);
+		int moves = dice.rollDice(2);
 		System.out.println("Você pode avançar " + moves + " vezes");
 		String move;
 		
@@ -135,16 +136,36 @@ public class Heroi extends Prop {
 			}
 			mapa.printMap();
 		}
+		acao.close();
 		
 	}
 	
 	public void printStatus() {
 		System.out.println("Jogador(a): " + nome + ", Arma1: " + atualArma1 + " Arma 2: " + atualArma1 + ", Vida: " + pontosVida + ", ouro: " + moedasOuro);
+		System.out.println("Classe: " + classe + ", Armadura: "+ atualArmadura);
+	}
+	
+	public void addArma(Arma arma) {
+		this.Armas.add(arma);
 	}
 	
 	//TODO
-	public void EquipaArma(String Arma) {
-		
+	public void EquipaArma(Arma arma) {
+		if(!Armas.contains(arma)) {
+			Armas.add(arma);
+		}
+		if(arma.ehDuasMaos()) {
+			atualArma1 = arma.getNome();
+			atualArma2 = "Bloqueado";
+		}
+		else if(atualArma1.compareTo("punho") == 0) {
+			atualArma1 = arma.getNome();
+				
+		}
+		else {
+			atualArma2 = arma.getNome();
+				
+		}
 	}
 	
 	//TODO
@@ -160,12 +181,6 @@ public class Heroi extends Prop {
 	//TODO
 	public void DesequipaArmadura() {
 		
-	}
-	
-	//TODO
-	public void addArma(String Arma) {
-		this.Armas[totalArmas] = Arma;
-		totalArmas++;
 	}
 	
 	//TODO
@@ -202,15 +217,5 @@ public class Heroi extends Prop {
 	public void removeItem(int index) {
 		
 	}
-	
-	//TODO
-	public void addMagia(String Magia) {
-		this.Armas[totalMagias] = Magia;
-		totalMagias++;
-	}
-	
-	//TODO
-	public void removeMagia(int index) {
-		
-	}
+
 }
