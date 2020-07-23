@@ -44,6 +44,7 @@ public class HeroQuest {
 	}
 	
 	public static void main(String[] args) {
+//inicio do jogo---------------------------------------------------
 		int[] pos = {0,0};
 		String comando = "a";
 		boolean ruuning = true;
@@ -55,28 +56,26 @@ public class HeroQuest {
 		defaultmap.generateDefaultMap();
 		
 		
-
-		
 		System.out.println("Para onde irá se mover:");
 		mapa.printMap();
+//inicio do jogo---------------------------------------------------
+
 		
-		
-		
-		while(comando != "e") {
+//rodadas---------------------------------------------------------
+		while(comando != "e" && ruuning) {
 			//remove o heroi do mapa
 			mapa.removeHeroi();
 			//lê o movimento do jogador
 			System.out.println("Qual sua ação?:");
 			comando = menu.nextLine();	
 			//movimenta o heroi
-			pos = heroi.move(comando);
-			//adiciona heroi na nova posição
-			mapa.addHeroi(pos, heroi);
+			heroi.move(comando, mapa);
 			//imprime Mapa
 			mapa.printMap();
 			//imprime status do herói
 			heroi.printStatus();
 		}
+//rodadas---------------------------------------------------------
 		
 		menu.close();
 		

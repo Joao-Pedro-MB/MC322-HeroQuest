@@ -36,6 +36,7 @@ public class Mapa {
 		}
 	}
 	
+	//adiciona paredes ao mapa
 	public void includeWall(int positionX, int positionY, String opcao) {
 		wallmap[positionX][positionY] = opcao;
 	}
@@ -75,6 +76,7 @@ public class Mapa {
 	}
 	
 	public void addHeroi(int[] pos, Prop heroi) {
+		System.out.println("Desceu");
 		heroiX += pos[1];
 		heroiY += pos[0];
 		map[heroiY][heroiX] = heroi;
@@ -97,36 +99,8 @@ public class Mapa {
 	}
 	
 	//pega o entorno do jogador
-	public Prop[] getSurroudings(Prop heroi) {
-		int x = heroi.getPosX();
-		int y = heroi.getPosY();
-		int n = 0;
-		
-		Prop[] surroudings = new Prop[4];
-		
-		for(int i = -1 ; i < 2 ; i+=2) {
-			try {
-				surroudings[n] = map[y][x+i];
-				n++;
-			}
-			catch(ArrayIndexOutOfBoundsException e) {
-				surroudings[n] = new Prop("0", 0, 0);
-				n++;
-			}
-		}
-		
-		for(int i = -1 ; i < 2 ; i+=2) {
-			try {
-				surroudings[n] = map[y+i][x];
-				n++;
-			}
-			catch(ArrayIndexOutOfBoundsException e) {
-				surroudings[n] = new Prop("0", 0, 0);
-				n++;
-			}
-		}
-		
-		return surroudings;
+	public Prop getSurroudings(int y, int x) {
+		return this.map[heroiY + y][heroiX + x];
 	}
 	
 	//delete props do mapa

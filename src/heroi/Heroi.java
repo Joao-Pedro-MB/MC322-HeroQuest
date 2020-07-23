@@ -1,6 +1,7 @@
 package heroi;
+import java.util.Scanner;
 import itens.*;
-import mapa.Prop;
+import mapa.*;
 
 
 
@@ -46,24 +47,95 @@ public class Heroi extends Prop {
 		this.moedasOuro-=quantidade;
 	}
 	
-	public int[] move(String move) {
-		int[] pos = {0,0};
+	public void move(String move, Mapa mapa) {
 		switch(move){
-			case "a":
-				pos[1]= -1;
-				return pos;
-			case "w":
-				pos[0]= -1;
-				return pos;
-			case "s":
-				pos[0]= 1;
-				return pos;
-			case "d":
-				pos[1]= 1;
-				return pos;
+			case "1":
+				System.out.println("Você quer se movimentar");
+				movimenta(mapa);
+				return;
+			case "2":
+				System.out.println("Você quer atacar");
+				ataca(mapa);
+				return;
+			case "3":
+				System.out.println("Você quer usar Item");
+				usaItem(mapa);
+				return;
+			case "4":
+				System.out.println("Você quer buscar Itens");
+				buscaItem(mapa);
+				return;
 			default:
-				return pos;
+				return;
 		}
+	}
+	
+	//avalia uma distancia pré definida na horizontal e vertical
+	//depois realiza o ataque
+	//TODO
+	private void ataca(Mapa mapa) {
+		for (int i = 0 ; i < 5 ; i++) {
+			if (mapa.getSurroudings(0, i) != null) {
+				System.out.println("Tem algo aqui");
+			}
+			if (mapa.getSurroudings(i, 0) != null) {
+				System.out.println("Tem algo aqui");
+			}
+		}
+	}
+	
+	private void usaItem(Mapa mapa) {
+		for (String item : Itens) {
+			System.out.println(item);
+		}
+	}
+	
+	private void buscaItem(Mapa mapa) {
+		for (int i = 0 ; i < 5 ; i++) {
+			if (mapa.getSurroudings(0, i) != null) {
+				System.out.println("Tem algo aqui");
+			}
+			if (mapa.getSurroudings(i, 0) != null) {
+				System.out.println("Tem algo aqui");
+			}
+		}
+	}
+	
+	public void movimenta(Mapa mapa) {
+		Scanner acao = new Scanner (System.in);
+		Dice dice = new Dice();
+		int moves = dice.rollDice(1);
+		System.out.println("Você pode avançar " + moves + " vezes");
+		String move;
+		
+		for (int i = moves ; i > 0 ; i--) {
+			mapa.removeHeroi();
+			move = acao.nextLine(); 
+			int[] pos = {0,0};
+			
+			if(move.compareTo("a") == 0) {
+				pos[1]= -1;
+				mapa.addHeroi(pos, this);
+			}
+			else if(move.compareTo("w") == 0) {
+				pos[0]= -1;
+				mapa.addHeroi(pos, this);
+			}
+			else if(move.compareTo("s") == 0) {
+				pos[0]= 1;
+				mapa.addHeroi(pos, this);
+			}
+			else if(move.compareTo("d") == 0) {
+				pos[1]= 1;
+				mapa.addHeroi(pos, this);
+			}
+			else {
+				pos[0]= 1;
+				mapa.addHeroi(pos, this);
+			}
+			mapa.printMap();
+		}
+		
 	}
 	
 	public void printStatus() {
