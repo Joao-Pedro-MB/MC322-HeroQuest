@@ -43,6 +43,10 @@ public class Mapa {
 		wallmap[positionX][positionY] = opcao;
 	}
 	
+	public void includeDoor(int positionX, int positionY, String opcao) {
+		wallmap[positionX][positionY] = opcao;
+	}
+	
 	//imprime mapa de itens
 	public void printMap () {
 		System.out.println();

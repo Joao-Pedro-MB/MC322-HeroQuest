@@ -273,7 +273,41 @@ public class DefaultMap {
 		mapa.includeWall(16, 24, "lado");
 		mapa.includeWall(17, 24, "baixolado");
 
-
+		// Doors
+		mapa.includeDoor(0, 18, "portabaixo");
+		mapa.includeDoor(0, 22, "portabaixo");
+		mapa.includeDoor(2, 0, "portalado");
+		mapa.includeDoor(2, 4, "portalado");
+		mapa.includeDoor(3, 11, "portalado");
+		mapa.includeDoor(3, 16, "portalado");
+		mapa.includeDoor(4, 22, "portabaixo");
+		mapa.includeDoor(6, 0, "portalado");
+		mapa.includeDoor(6, 20, "portalado");
+		mapa.includeDoor(7, 20, "portalado");
+		mapa.includeDoor(8, 6, "portabaixo");
+		mapa.includeDoor(8, 7, "portabaixo");
+		mapa.includeDoor(8, 18, "portabaixo");
+		mapa.includeDoor(9, 2, "portabaixo");
+		mapa.includeDoor(9, 3, "portabaixo");
+		mapa.includeDoor(9, 9, "portalado");
+		mapa.includeDoor(9, 15, "portalado");
+		mapa.includeDoor(9, 19, "portabaixo");
+		mapa.includeDoor(9, 22, "portabaixo");
+		mapa.includeDoor(11, 4, "portalado");
+		mapa.includeDoor(11, 6, "portalado");
+		mapa.includeDoor(11, 20, "portalado");
+		mapa.includeDoor(12, 15, "portabaixo");
+		mapa.includeDoor(12, 20, "portalado");
+		mapa.includeDoor(13, 19, "portabaixo");
+		mapa.includeDoor(14, 11, "portalado");
+		mapa.includeDoor(15, 4, "portalado");
+		mapa.includeDoor(15, 8, "portalado");
+		mapa.includeDoor(15, 13, "portalado");
+		mapa.includeDoor(15, 17, "portalado");
+		mapa.includeDoor(16, 4, "portalado");
+		mapa.includeDoor(16, 20, "portalado");
+		mapa.includeDoor(17, 2, "portabaixo");
+		mapa.includeDoor(17, 3, "portabaixo");
 
 	}
 }
