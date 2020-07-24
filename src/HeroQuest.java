@@ -74,6 +74,10 @@ public class HeroQuest {
 			mapa.removeHeroi();
 			//lê o movimento do jogador
 			System.out.println("Qual sua ação?:");
+			System.out.print("| Opção 1 - Movimentar        |\n");
+			System.out.print("| Opção 2 - Atacar            |\n");
+			System.out.print("| Opção 3 - Usar Item         |\n");
+			System.out.print("| Opção 4 - Buscar Item       |\n");
 			comando = menu.nextLine();	
 			//movimenta o heroi
 			heroi.move(comando, mapa);

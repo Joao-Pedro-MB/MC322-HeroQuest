@@ -116,27 +116,25 @@ public class Heroi extends Prop {
 			
 			if(move.compareTo("a") == 0) {
 				pos[1]= -1;
-				mapa.addHeroi(pos, this);
 			}
 			else if(move.compareTo("w") == 0) {
 				pos[0]= -1;
-				mapa.addHeroi(pos, this);
 			}
 			else if(move.compareTo("s") == 0) {
 				pos[0]= 1;
-				mapa.addHeroi(pos, this);
 			}
 			else if(move.compareTo("d") == 0) {
 				pos[1]= 1;
-				mapa.addHeroi(pos, this);
 			}
 			else {
 				pos[0]= 1;
-				mapa.addHeroi(pos, this);
 			}
+			int movimentoImpossivel = mapa.addHeroi(pos, this); //Retorna 1 caso não seja possível movimentar
+			i += movimentoImpossivel;
+			
 			mapa.printMap();
 		}
-		acao.close();
+		//acao.close();
 		
 	}
 	

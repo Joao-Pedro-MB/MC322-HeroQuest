@@ -1,5 +1,7 @@
 package mapa;
 
+import exception.IllegalMoveException;
+
 public class Mapa {
 	Prop[][] map;
 	String[][] wallmap;
@@ -75,11 +77,50 @@ public class Mapa {
 		}
 	}
 	
-	public void addHeroi(int[] pos, Prop heroi) {
+	public int addHeroi(int[] pos, Prop heroi) {
 		System.out.println("Desceu");
+		String move="";
 		heroiX += pos[1];
 		heroiY += pos[0];
-		map[heroiY][heroiX] = heroi;
+		if(pos[1] == 1) {
+			move = "direita";
+		}
+		else if(pos[1] == -1) {
+			move = "esquerda";
+		}
+		else if(pos[0] == 1) {
+			move = "baixo";
+		}
+		else if(pos[0] == -1) {
+			move = "cima";
+		}
+		
+		System.out.println("Hello World:" + move);
+		
+		try {
+			if((move.equals("baixo") && wallmap[heroiY-1][heroiX].equals("baixo")) || (move.equals("baixo") && wallmap[heroiY-1][heroiX].equals("baixolado"))) {
+				throw new IllegalMoveException();
+			}
+			else if((move.equals("direita") && wallmap[heroiY][heroiX-1].equals("lado")) || (move.equals("direita") && wallmap[heroiY][heroiX-1].equals("baixolado"))) {
+				throw new IllegalMoveException();
+			}
+			else if((move.equals("cima") && wallmap[heroiY][heroiX].equals("baixo")) || (move.equals("cima") && wallmap[heroiY][heroiX].equals("baixolado"))) {
+				throw new IllegalMoveException();
+			}
+			else if((move.equals("esquerda") && wallmap[heroiY][heroiX].equals("lado")) || (move.equals("esquerda") && wallmap[heroiY][heroiX].equals("baixolado"))) {
+				throw new IllegalMoveException();
+			}
+			map[heroiY][heroiX] = heroi;
+		}
+		catch(Exception e) {
+			heroiX -= pos[1];
+			heroiY -= pos[0];
+			map[heroiY][heroiX] = heroi;
+			
+			return 1;
+ 		}
+		
+		return 0;
 	}
 	
 	public void removeHeroi() {
