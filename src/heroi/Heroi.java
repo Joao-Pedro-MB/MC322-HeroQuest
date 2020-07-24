@@ -1,7 +1,7 @@
 package heroi;
 import java.util.ArrayList;
 import java.util.Scanner;
-import itens.Arma;
+import itens.*;
 import mapa.*;
 
 
@@ -11,16 +11,13 @@ public class Heroi extends Prop {
 	private int dadosAtaque, dadosAtaqueArma, dadosDefesa;
 	private int pontosVida, pontosInteligencia, moedasOuro;
 	int totalArmas = 0, totalMagias = 0;
-	// Armas, Armaduras, Poções, outros itens
-	// Current Armor
-	// Current Arma 1
-	// Current Arma 2	
 	private ArrayList<Arma> Armas = new ArrayList<Arma>();
-	private String[] Armaduras;
-	private ArrayList<String> Pocoes = new ArrayList<String>();
+	private ArrayList<Armadura> Armaduras = new ArrayList<Armadura>();
+	private ArrayList<Pocao> Pocoes = new ArrayList<Pocao>();
 	private ArrayList<String> Itens = new ArrayList<String>();
-	private String atualArmadura, atualArma1 = "punho", atualArma2 = "punho", classe;
-
+	private String classe;
+	private Arma atualArma1 = null, atualArma2 = null;
+	private Armadura atualArmadura = null;
 	
 	
 	public Heroi(String nome, String classe, int dadosAtaque, int dadosDefesa, int pontosVida, int pontosInteligencia) {
@@ -31,11 +28,46 @@ public class Heroi extends Prop {
 		this.dadosDefesa = dadosDefesa;
 		this.pontosVida = pontosVida;
 		this.pontosInteligencia = pontosInteligencia;
-		this.Armaduras = new String[10];
 		this.Itens.add("item1");
-		this.Pocoes.add("pocao1");
 		
 	}
+	
+	//TODO
+	public void addItem (String Item) {
+		
+	}
+	
+	//TODO
+	public void removeItem(int index) {
+		
+	}
+	
+	//TODO
+	private void buscaItem(Mapa mapa) {
+		for (int i = 0 ; i < 5 ; i++) {
+			if (mapa.getSurroudings(0, i) != null) {
+				System.out.println("Tem algo aqui");
+			}
+			if (mapa.getSurroudings(i, 0) != null) {
+				System.out.println("Tem algo aqui");
+			}
+		}
+	}
+
+	//avalia uma distancia pré definida na horizontal e vertical
+	//depois realiza o ataque
+	//TODO
+	private void ataca(Mapa mapa) {
+		for (int i = 0 ; i < 5 ; i++) {
+			if (mapa.getSurroudings(0, i) != null) {
+				System.out.println("Tem algo aqui");
+			}
+			if (mapa.getSurroudings(i, 0) != null) {
+				System.out.println("Tem algo aqui");
+			}
+		}
+	}
+
 	
 	public void adicionaOuro(int quantidade) {
 		this.moedasOuro+=quantidade;
@@ -67,39 +99,14 @@ public class Heroi extends Prop {
 				return;
 		}
 	}
-	
-	//avalia uma distancia pré definida na horizontal e vertical
-	//depois realiza o ataque
-	//TODO
-	private void ataca(Mapa mapa) {
-		for (int i = 0 ; i < 5 ; i++) {
-			if (mapa.getSurroudings(0, i) != null) {
-				System.out.println("Tem algo aqui");
-			}
-			if (mapa.getSurroudings(i, 0) != null) {
-				System.out.println("Tem algo aqui");
-			}
-		}
-	}
-	
+		
 	private void usaItem() {
 		for(String item:Itens) {
             System.out.println(item);
         } 
-		for(String pocoes:Pocoes) {
-            System.out.println(pocoes);
+		for(Pocao pocoes:Pocoes) {
+            System.out.println(pocoes.getNome());
         }
-	}
-	
-	private void buscaItem(Mapa mapa) {
-		for (int i = 0 ; i < 5 ; i++) {
-			if (mapa.getSurroudings(0, i) != null) {
-				System.out.println("Tem algo aqui");
-			}
-			if (mapa.getSurroudings(i, 0) != null) {
-				System.out.println("Tem algo aqui");
-			}
-		}
 	}
 	
 	public void movimenta(Mapa mapa) {
@@ -134,86 +141,76 @@ public class Heroi extends Prop {
 			
 			mapa.printMap();
 		}
-		//acao.close();
+		acao.close();
 		
 	}
 	
 	public void printStatus() {
-		System.out.println("Jogador(a): " + nome + ", Arma1: " + atualArma1 + " Arma 2: " + atualArma1 + ", Vida: " + pontosVida + ", ouro: " + moedasOuro);
-		System.out.println("Classe: " + classe + ", Armadura: "+ atualArmadura);
+		System.out.println("Jogador(a): " + nome + ", Arma1: " + ((atualArma1 != null) ? atualArma1.getNome(): "punho") + " Arma 2: " + ((atualArma2 != null) ? atualArma2.getNome(): "punho") + ", Vida: " + pontosVida + ", ouro: " + moedasOuro);
+		System.out.println("Classe: " + classe + ", Armadura: "+ ((atualArmadura != null) ? atualArmadura.getNome(): "trapos"));
 	}
 	
 	public void addArma(Arma arma) {
 		this.Armas.add(arma);
 	}
 	
-	//TODO
 	public void EquipaArma(Arma arma) {
 		if(!Armas.contains(arma)) {
 			Armas.add(arma);
 		}
 		if(arma.ehDuasMaos()) {
-			atualArma1 = arma.getNome();
-			atualArma2 = "Bloqueado";
+			atualArma1 = arma;
+			atualArma2 = null;
 		}
-		else if(atualArma1.compareTo("punho") == 0) {
-			atualArma1 = arma.getNome();
+		else if(atualArma1 == null) {
+			atualArma1 = arma;
 				
 		}
 		else {
-			atualArma2 = arma.getNome();
+			atualArma2 = arma;
 				
 		}
 	}
 	
-	//TODO
 	public void DesequipaArma() {
-		
+		atualArma1 = null;
+		atualArma2 = null;
 	}
 	
-	//TODO
-	public void EquipaArmadura(String Armadura) {
-		
-	}
-	
-	//TODO
-	public void DesequipaArmadura() {
-		
-	}
-	
-	//TODO
-	public void removeArma(int index) {
-		
-	}
-	
-	//TODO
-	public void addArmadura(String Armadura) {
-		
-	}
-	
-	//TODO
-	public void removeArmadura(int index) {
-		
-	}
-	
-	//TODO
-	public void addPocao(String Pocao) {
-		
-	}
-	
-	//TODO
-	public void removePocao(int index) {
-		
-	}
-	
-	//TODO
-	public void addItem (String Item) {
-		
-	}
-	
-	//TODO
-	public void removeItem(int index) {
-		
+	public void EquipaArmadura(Armadura armadura) {
+		if(!Armaduras.contains(armadura)) {
+			Armaduras.add(armadura);
+		}
+		atualArmadura = armadura;
 	}
 
+	public void DesequipaArmadura() {
+		atualArmadura = null;
+	}
+	
+	public void removeArma(Arma arma) {
+		if (Armas.contains(arma)) {
+			Armas.remove(arma);
+		}
+	}
+	
+	public void addArmadura(Armadura armadura) {
+		Armaduras.add(armadura);
+	}
+	
+	public void removeArmadura(Armadura armadura) {
+		if (Armaduras.contains(armadura)) {
+			Armaduras.remove(armadura);
+		}
+	}
+	
+	public void addPocao(Pocao pocao) {
+		Pocoes.add(pocao);
+	}
+	
+	public void removePocao(Pocao pocao) {
+		if (Pocoes.contains(pocao)) {
+			Pocoes.remove(pocao);
+		}
+	}
 }

@@ -78,7 +78,6 @@ public class Mapa {
 	}
 	
 	public int addHeroi(int[] pos, Prop heroi) {
-		System.out.println("Desceu");
 		String move="";
 		heroiX += pos[1];
 		heroiY += pos[0];
@@ -94,8 +93,6 @@ public class Mapa {
 		else if(pos[0] == -1) {
 			move = "cima";
 		}
-		
-		System.out.println("Hello World:" + move);
 		
 		try {
 			if((move.equals("baixo") && wallmap[heroiY-1][heroiX].equals("baixo")) || (move.equals("baixo") && wallmap[heroiY-1][heroiX].equals("baixolado"))) {

@@ -1,6 +1,7 @@
 package itens;
 
 
-public class Itens {
-
+interface Itens {
+	
+	String getNome();
 }
