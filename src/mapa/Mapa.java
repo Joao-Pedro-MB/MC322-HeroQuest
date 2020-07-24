@@ -1,5 +1,6 @@
 package mapa;
-
+import heroi.Heroi;
+import java.lang.IndexOutOfBoundsException;
 import exception.IllegalMoveException;
 
 public class Mapa {
@@ -126,6 +127,21 @@ public class Mapa {
 	
 	public void removeHeroi() {
 		map[heroiY][heroiX] = null;
+	}
+	
+	public void teleportaHeroi(int x, int y) {
+		try {
+			map[y][x] = null;
+		}
+		catch(IndexOutOfBoundsException e) {
+			System.out.println("Teleporte Inválido");
+			return;
+		}
+		
+		int[] pos= {y,x};
+		Heroi heroi = (Heroi)map[heroiY][heroiX];
+		removeHeroi();
+		addHeroi(pos, heroi);
 	}
 	
 	//atualiza a posição do jogado no mapa

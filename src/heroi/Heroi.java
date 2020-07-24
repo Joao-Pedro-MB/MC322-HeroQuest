@@ -208,6 +208,10 @@ public class Heroi extends Prop {
 		Pocoes.add(pocao);
 	}
 	
+	public void addVida(int pontos) {
+		this.pontosVida += pontos;
+	}
+	
 	public void removePocao(Pocao pocao) {
 		if (Pocoes.contains(pocao)) {
 			Pocoes.remove(pocao);

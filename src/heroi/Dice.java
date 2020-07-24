@@ -5,12 +5,12 @@ public class Dice {
 	Random dice;
 	int result;
 	
-	Dice() {
+	public Dice() {
 		dice = new Random();
 	}
 	
 	//dado de movimento
-	int rollDice(int numOfDices) {
+	public int rollDice(int numOfDices) {
 		result = 0;
 		
 		for(int i = 0 ; i < numOfDices ; i++) {
