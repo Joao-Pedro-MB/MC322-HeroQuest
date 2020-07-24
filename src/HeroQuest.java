@@ -55,7 +55,7 @@ public class HeroQuest {
 		int[] pos = {0,0};
 		String comando = "a";
 		boolean ruuning = true;
-		Mapa mapa = new Mapa(12,27);
+		Mapa mapa = new Mapa(19,26);
 		Heroi heroi = criarPersonagem();
 		mapa.addHeroi(pos, heroi);
 		

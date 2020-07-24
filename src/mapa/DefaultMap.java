@@ -19,34 +19,34 @@ public class DefaultMap {
 		mapa.includeWall(7, 0, "lado");
 		mapa.includeWall(8, 0, "lado");
 		mapa.includeWall(10, 0, "lado");
-		mapa.includeWall(9, 0, "lado");
-		mapa.includeWall(9, 0, "lado");
-		mapa.includeWall(9, 0, "lado");
-		mapa.includeWall(9, 0, "lado");
-		mapa.includeWall(9, 0, "lado");
-		mapa.includeWall(9, 0, "lado");
-		mapa.includeWall(9, 0, "lado");
+		mapa.includeWall(11, 0, "lado");
+		mapa.includeWall(12, 0, "lado");
+		mapa.includeWall(13, 0, "lado");
+		mapa.includeWall(14, 0, "lado");
+		mapa.includeWall(15, 0, "lado");
+		mapa.includeWall(16, 0, "lado");
+		mapa.includeWall(17	, 0, "lado");
 
 		mapa.includeWall(0, 1, "baixo");
 		mapa.includeWall(3, 1, "baixo");
 		mapa.includeWall(8, 1, "baixo");
 		mapa.includeWall(9, 1, "baixo");
-		mapa.includeWall(9, 1, "baixo");
-		mapa.includeWall(9, 1, "baixo");
+		mapa.includeWall(13, 1, "baixo");
+		mapa.includeWall(17, 1, "baixo");
 		
 		mapa.includeWall(0, 2, "baixo");
 		mapa.includeWall(3, 2, "baixo");
 		mapa.includeWall(8, 2, "baixo");
 		mapa.includeWall(9, 2, "baixo");
-		mapa.includeWall(9, 2, "baixo");
-		mapa.includeWall(9, 2, "baixo");
+		mapa.includeWall(13, 2, "baixo");
+		mapa.includeWall(17, 2, "baixo");
 		
 		mapa.includeWall(0, 3, "baixo");
 		mapa.includeWall(3, 3, "baixo");
 		mapa.includeWall(8, 3, "baixo");
 		mapa.includeWall(9, 3, "baixo");
-		mapa.includeWall(9, 3, "baixo");
-		mapa.includeWall(9, 3, "baixo");
+		mapa.includeWall(13, 3, "baixo");
+		mapa.includeWall(17, 3, "baixo");
 		
 		mapa.includeWall(0, 4, "baixo");
 		mapa.includeWall(1, 4, "lado");
@@ -59,37 +59,36 @@ public class DefaultMap {
 		mapa.includeWall(8, 4, "baixolado");
 		mapa.includeWall(9, 4, "baixo");
 		mapa.includeWall(10, 4, "lado");
-		mapa.includeWall(9, 4, "lado");
-		mapa.includeWall(9, 4, "lado");
-		mapa.includeWall(9, 4, "baixolado");
-		mapa.includeWall(9, 4, "lado");
-		mapa.includeWall(9, 4, "lado");
-		mapa.includeWall(9, 4, "lado");
-		mapa.includeWall(9, 4, "baixolado");
+		mapa.includeWall(11, 4, "lado");
+		mapa.includeWall(12, 4, "lado");
+		mapa.includeWall(13, 4, "baixolado");
+		mapa.includeWall(14, 4, "lado");
+		mapa.includeWall(15, 4, "lado");
+		mapa.includeWall(16, 4, "lado");
+		mapa.includeWall(17, 4, "baixolado");
 		
 		mapa.includeWall(0, 5, "baixo");
 		mapa.includeWall(3, 5, "baixo");
 		mapa.includeWall(8, 5, "baixo");
 		mapa.includeWall(9, 5, "baixo");
-		mapa.includeWall(9, 5, "baixo");
-		mapa.includeWall(9, 5, "baixo");
+		mapa.includeWall(12, 5, "baixo");
+		mapa.includeWall(17, 5, "baixo");
 		
 		mapa.includeWall(0, 6, "baixo");
 		mapa.includeWall(3, 6, "baixo");
 		mapa.includeWall(8, 6, "baixo");
 		mapa.includeWall(9, 6, "baixo");
 		mapa.includeWall(10, 6, "lado");
-		mapa.includeWall(9, 6, "lado");
-		mapa.includeWall(9, 6, "lado");
-		mapa.includeWall(9, 6, "baixolado");
-		mapa.includeWall(9, 6, "baixo");
+		mapa.includeWall(11, 6, "lado");
+		mapa.includeWall(12, 6, "baixolado");
+		mapa.includeWall(17, 6, "baixo");
 		
 		mapa.includeWall(0, 7, "baixo");
 		mapa.includeWall(3, 7, "baixo");
 		mapa.includeWall(8, 7, "baixo");
 		mapa.includeWall(9, 7, "baixo");
-		mapa.includeWall(9, 7, "baixo");
-		mapa.includeWall(9, 7, "baixo");
+		mapa.includeWall(12, 7, "baixo");
+		mapa.includeWall(17, 7, "baixo");
 		
 		mapa.includeWall(0, 8, "baixo");
 		mapa.includeWall(1, 8, "lado");
@@ -102,33 +101,178 @@ public class DefaultMap {
 		mapa.includeWall(8, 8, "baixolado");
 		mapa.includeWall(9, 8, "baixo");
 		mapa.includeWall(10, 8, "lado");
-		mapa.includeWall(9, 8, "lado");
-		mapa.includeWall(9, 8, "lado");
-		mapa.includeWall(9, 8, "baixolado");
-		mapa.includeWall(9, 8, "lado");
-		mapa.includeWall(9, 8, "lado");
-		mapa.includeWall(9, 8, "lado");
-		mapa.includeWall(9, 8, "baixolado");
+		mapa.includeWall(11, 8, "lado");
+		mapa.includeWall(12, 8, "baixolado");
+		mapa.includeWall(13, 8, "lado");
+		mapa.includeWall(14, 8, "lado");
+		mapa.includeWall(15, 8, "lado");
+		mapa.includeWall(16, 8, "lado");
+		mapa.includeWall(17, 8, "baixolado");
 		
 		mapa.includeWall(0, 9, "baixo");
-		mapa.includeWall(3, 9, "baixo");
-		mapa.includeWall(5, 9, "lado");
-		mapa.includeWall(6, 9, "lado");
+		mapa.includeWall(5, 9, "baixo");
 		mapa.includeWall(7, 9, "lado");
 		mapa.includeWall(8, 9, "lado");
 		mapa.includeWall(9, 9, "lado");
 		mapa.includeWall(10, 9, "lado");
-		mapa.includeWall(4, 9, "lado");
-		mapa.includeWall(9, 9, "lado");
-		mapa.includeWall(9, 9, "baixo");
-		mapa.includeWall(9, 9, "baixo");
+		mapa.includeWall(11, 9, "lado");
+		mapa.includeWall(12, 9, "baixo");
+		mapa.includeWall(17, 9, "baixo");
 		
 		mapa.includeWall(0, 10, "baixo");
-		mapa.includeWall(3, 10, "baixo");
-		mapa.includeWall(4, 10, "baixo");
-		mapa.includeWall(9, 10, "baixo");
-		mapa.includeWall(9, 10, "baixo");
-		mapa.includeWall(9, 10, "baixo");
+		mapa.includeWall(5, 10, "baixo");
+		mapa.includeWall(6, 10, "baixo");
+		mapa.includeWall(11, 10, "baixo");
+		mapa.includeWall(12, 10, "baixo");
+		mapa.includeWall(17, 10, "baixo");
+		
+		mapa.includeWall(0, 11, "baixo");
+		mapa.includeWall(1, 11, "lado");
+		mapa.includeWall(2, 11, "lado");
+		mapa.includeWall(3, 11, "lado");
+		mapa.includeWall(4, 11, "lado");
+		mapa.includeWall(5, 11, "baixolado");
+		mapa.includeWall(6, 11, "baixo");		
+		mapa.includeWall(11, 11, "baixo");
+		mapa.includeWall(12, 11, "baixo");
+		mapa.includeWall(13, 11, "lado");
+		mapa.includeWall(14, 11, "lado");
+		mapa.includeWall(15, 11, "lado");
+		mapa.includeWall(16, 11, "lado");
+		mapa.includeWall(17, 11, "baixolado");
+		
+		mapa.includeWall(6, 12, "baixo");		
+		mapa.includeWall(11, 12, "baixo");
+		
+		mapa.includeWall(1, 13, "lado");
+		mapa.includeWall(2, 13, "lado");
+		mapa.includeWall(3, 13, "lado");
+		mapa.includeWall(4, 13, "lado");	
+		mapa.includeWall(5, 13, "lado");	
+		mapa.includeWall(6, 13, "baixo");
+		mapa.includeWall(11, 13, "baixo");
+		mapa.includeWall(13, 13, "lado");
+		mapa.includeWall(14, 13, "lado");
+		mapa.includeWall(15, 13, "lado");
+		mapa.includeWall(16, 13, "lado");
+		mapa.includeWall(17, 13, "lado");
+		
+		mapa.includeWall(0, 14, "baixo");
+		mapa.includeWall(5, 14, "baixo");
+		mapa.includeWall(6, 14, "baixo");		
+		mapa.includeWall(11, 14, "baixo");
+		mapa.includeWall(12, 14, "baixo");
+		mapa.includeWall(17, 14, "baixo");
+		
+		mapa.includeWall(0, 15, "baixo");
+		mapa.includeWall(5, 15, "baixo");
+		mapa.includeWall(6, 15, "baixo");
+		mapa.includeWall(7, 15, "lado");
+		mapa.includeWall(8, 15, "lado");
+		mapa.includeWall(9, 15, "lado");
+		mapa.includeWall(10, 15, "lado");
+		mapa.includeWall(11, 15, "baixolado");
+		mapa.includeWall(12, 15, "baixo");
+		mapa.includeWall(17, 15, "baixo");
+		
+		mapa.includeWall(0, 16, "baixo");
+		mapa.includeWall(1, 16, "lado");
+		mapa.includeWall(2, 16, "lado");
+		mapa.includeWall(3, 16, "lado");
+		mapa.includeWall(4, 16, "lado");
+		mapa.includeWall(5, 16, "baixolado");
+		mapa.includeWall(6, 16, "lado");
+		mapa.includeWall(7, 16, "lado");
+		mapa.includeWall(8, 16, "lado");
+		mapa.includeWall(10, 16, "lado");
+		mapa.includeWall(11, 16, "lado");
+		mapa.includeWall(12, 16, "baixolado");
+		mapa.includeWall(17, 16, "baixo");
+		
+		mapa.includeWall(0, 17, "baixo");
+		mapa.includeWall(4, 17, "baixo");
+		mapa.includeWall(8, 17, "baixo");
+		mapa.includeWall(9, 17, "baixo");
+		mapa.includeWall(12, 17, "baixo");
+		mapa.includeWall(13, 17, "lado");
+		mapa.includeWall(14, 17, "lado");
+		mapa.includeWall(15, 17, "lado");
+		mapa.includeWall(16, 17, "lado");
+		mapa.includeWall(17, 17, "baixolado");
+		
+		mapa.includeWall(0, 18, "baixo");
+		mapa.includeWall(4, 18, "baixo");
+		mapa.includeWall(8, 18, "baixo");
+		mapa.includeWall(9, 18, "baixo");
+		mapa.includeWall(13, 18, "baixo");
+		mapa.includeWall(17, 18, "baixo");
+
+		mapa.includeWall(0, 19, "baixo");
+		mapa.includeWall(4, 19, "baixo");
+		mapa.includeWall(8, 19, "baixo");
+		mapa.includeWall(9, 19, "baixo");
+		mapa.includeWall(13, 19, "baixo");
+		mapa.includeWall(17, 19, "baixo");
+		
+		mapa.includeWall(0, 20, "baixo");
+		mapa.includeWall(1, 20, "lado");
+		mapa.includeWall(2, 20, "lado");
+		mapa.includeWall(3, 20, "lado");
+		mapa.includeWall(4, 20, "baixolado");
+		mapa.includeWall(5, 20, "lado");
+		mapa.includeWall(6, 20, "lado");
+		mapa.includeWall(7, 20, "lado");
+		mapa.includeWall(8, 20, "baixolado");
+		mapa.includeWall(9, 20, "baixo");
+		mapa.includeWall(10, 20, "lado");
+		mapa.includeWall(11, 20, "lado");
+		mapa.includeWall(12, 20, "lado");
+		mapa.includeWall(13, 20, "baixolado");
+		mapa.includeWall(14, 20, "lado");
+		mapa.includeWall(15, 20, "lado");
+		mapa.includeWall(16, 20, "lado");
+		mapa.includeWall(17, 20, "baixolado");
+		
+		mapa.includeWall(0, 21, "baixo");
+		mapa.includeWall(4, 21, "baixo");
+		mapa.includeWall(8, 21, "baixo");
+		mapa.includeWall(9, 21, "baixo");
+		mapa.includeWall(13, 21, "baixo");
+		mapa.includeWall(17, 21, "baixo");
+		
+		mapa.includeWall(0, 22, "baixo");
+		mapa.includeWall(4, 22, "baixo");
+		mapa.includeWall(8, 22, "baixo");
+		mapa.includeWall(9, 22, "baixo");
+		mapa.includeWall(13, 22, "baixo");
+		mapa.includeWall(17, 22, "baixo");
+		
+		mapa.includeWall(0, 23, "baixo");
+		mapa.includeWall(4, 23, "baixo");
+		mapa.includeWall(8, 23, "baixo");
+		mapa.includeWall(9, 23, "baixo");
+		mapa.includeWall(13, 23, "baixo");
+		mapa.includeWall(17, 23, "baixo");
+		
+		mapa.includeWall(0, 24, "baixo");
+		mapa.includeWall(1, 24, "lado");
+		mapa.includeWall(2, 24, "lado");
+		mapa.includeWall(3, 24, "lado");
+		mapa.includeWall(4, 24, "baixolado");
+		mapa.includeWall(5, 24, "lado");
+		mapa.includeWall(6, 24, "lado");
+		mapa.includeWall(7, 24, "lado");
+		mapa.includeWall(8, 24, "baixolado");
+		mapa.includeWall(9, 24, "baixo");
+		mapa.includeWall(10, 24, "lado");
+		mapa.includeWall(11, 24, "lado");
+		mapa.includeWall(12, 24, "lado");
+		mapa.includeWall(13, 24, "baixolado");
+		mapa.includeWall(14, 24, "lado");
+		mapa.includeWall(15, 24, "lado");
+		mapa.includeWall(16, 24, "lado");
+		mapa.includeWall(17, 24, "baixolado");
+
 
 
 	}
