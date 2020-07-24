@@ -1,4 +1,5 @@
 package itens;
+
 public class Arma implements Itens{
 	
 	int dadosAtaque;
