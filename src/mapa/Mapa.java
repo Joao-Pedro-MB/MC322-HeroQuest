@@ -28,7 +28,7 @@ public class Mapa {
 		}
 	}
 	
-	//adiciona itens ao mapa
+	/*adiciona itens ao mapa
 	public void includeItem(Prop item) {
 		
 		int x = item.getPosX();
@@ -42,7 +42,7 @@ public class Mapa {
 			System.out.println("Um item foi posicionado fora do mapa:");
 			item.print();
 		}
-	}
+	}*/
 	
 	//adiciona paredes ao mapa
 	public void includeWall(int positionX, int positionY, String opcao) {
@@ -60,7 +60,7 @@ public class Mapa {
 			}
 		}
 	}
-	
+		
 	//imprime mapa de itens
 	public void printMap () {
 		System.out.println();
@@ -164,17 +164,17 @@ public class Mapa {
 		addHeroi(pos, heroi);
 	}
 	
-	//atualiza a posição do jogado no mapa
-	public void movePlayer(int[] move, Prop heroi) {
-		try {
-			map[move[0]][move[1]] = heroi;
-		}
-		catch(IndexOutOfBoundsException e){
-			System.out.println("Movimento inválido");
-			return;
-		}
+	/*atualiza a posição do jogado no mapa
+	//public void movePlayer(int[] move, Prop heroi) {
+	//	try {
+	//		map[move[0]][move[1]] = heroi;
+	//	}
+	//	catch(IndexOutOfBoundsException e){
+	//		System.out.println("Movimento inválido");
+	//		return;
+	//	}
 			
-	}
+	}*/
 	
 	public void refreshHeroMap() {
 		for (int i = 0 ; i < lineLength ; i++) {
@@ -296,7 +296,7 @@ public class Mapa {
 		return this.map[heroiY + y][heroiX + x];
 	}
 	
-	//delete props do mapa
+	//deleta props do mapa
 	public void delete(Prop item) {
 		try {
 			map[item.getPosY()][item.getPosX()] = null;

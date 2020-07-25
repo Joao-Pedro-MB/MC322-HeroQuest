@@ -13,7 +13,7 @@ public class Heroi extends Prop {
 	int totalArmas = 0, totalMagias = 0;
 	private ArrayList<Arma> Armas = new ArrayList<Arma>();
 	private ArrayList<Armadura> Armaduras = new ArrayList<Armadura>();
-	private ArrayList<Pocao> Pocoes = new ArrayList<Pocao>();
+	//private ArrayList<Pocao> Pocoes = new ArrayList<Pocao>();
 	private ArrayList<String> Itens = new ArrayList<String>();
 	private String classe;
 	private Arma atualArma1 = null, atualArma2 = null;
@@ -68,8 +68,7 @@ public class Heroi extends Prop {
 		}
 	}
 
-	
-	public void adicionaOuro(int quantidade) {
+	public void addOuro(int quantidade) {
 		this.moedasOuro+=quantidade;
 	}
 	
@@ -104,9 +103,9 @@ public class Heroi extends Prop {
 		for(String item:Itens) {
             System.out.println(item);
         } 
-		for(Pocao pocoes:Pocoes) {
-            System.out.println(pocoes.getNome());
-        }
+		//for(Pocao pocoes:Pocoes) {
+        //    System.out.println(pocoes.getNome());
+        //}
 	}
 	
 	public void movimenta(Mapa mapa) {
@@ -151,7 +150,16 @@ public class Heroi extends Prop {
 	}
 	
 	public void addArma(Arma arma) {
-		this.Armas.add(arma);
+		if(podeUsar(arma)) {
+			this.Armas.add(arma);
+		}
+	}
+	
+	public boolean podeUsar(Arma arma) {
+		if(!arma.ehRestrita() || classe.compareTo("Feiticeiro") != 0) {
+			return true;
+		}
+		return false;
 	}
 	
 	public void EquipaArma(Arma arma) {
@@ -203,18 +211,18 @@ public class Heroi extends Prop {
 			Armaduras.remove(armadura);
 		}
 	}
-	
-	public void addPocao(Pocao pocao) {
-		Pocoes.add(pocao);
-	}
-	
+
 	public void addVida(int pontos) {
 		this.pontosVida += pontos;
 	}
 	
-	public void removePocao(Pocao pocao) {
-		if (Pocoes.contains(pocao)) {
-			Pocoes.remove(pocao);
-		}
+	public void recebeDano(int dano) {
+		pontosVida -= dano;
 	}
+	
+	//public void removePocao(Pocao pocao) {
+	//	if (Pocoes.contains(pocao)) {
+	//		Pocoes.remove(pocao);
+	//	}
+	//}
 }

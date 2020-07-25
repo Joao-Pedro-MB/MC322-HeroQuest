@@ -3,15 +3,15 @@ package itens;
 public class Arma implements Itens{
 	
 	int dadosAtaque;
-	boolean consumivel, longoAlcance, mageRestricted, duasMaos;
+	boolean consumivel, longoAlcance, feiticeiroRestrito, duasMaos;
 	String nome;
-	public Arma(String nome, boolean duasMaos, boolean longoAlcance, int dadosAtaque, boolean consumivel, boolean mageRestricted) {
+	public Arma(String nome, boolean duasMaos, boolean longoAlcance, int dadosAtaque, boolean consumivel, boolean feiticeiroRestrito) {
 		this.nome = nome;
 		this.duasMaos = duasMaos;
 		this.longoAlcance = longoAlcance;
 		this.dadosAtaque = dadosAtaque;
 		this.consumivel = consumivel;
-		this.mageRestricted = mageRestricted;
+		this.feiticeiroRestrito = feiticeiroRestrito;
 	}
 	
 	int getBonus() {
@@ -26,11 +26,7 @@ public class Arma implements Itens{
 		return this.duasMaos;
 	}
 	
-	boolean canUse(String heroi) {
-		if(mageRestricted && heroi.compareTo("Feiticeiro") == 0) {
-			return false;
-		}
-		
-		return true;
+	public boolean ehRestrita() {
+		return feiticeiroRestrito;
 	}
 }
