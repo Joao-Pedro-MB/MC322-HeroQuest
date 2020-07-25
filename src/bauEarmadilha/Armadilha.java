@@ -11,4 +11,8 @@ public class Armadilha extends Prop{
 	public void ativar(Heroi heroi) {
 		heroi.recebeDano(3);
 	}
+	
+	public void revelado() {
+		this.symbol = "XX";
+	}
 }

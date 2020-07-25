@@ -63,15 +63,13 @@ public class HeroQuest {
 		defaultmap.generateDefaultMap();
 		
 		
-		System.out.println("Para onde irá se mover:");
 		mapa.printMap();
+		heroi.printStatus();
 //inicio do jogo---------------------------------------------------
 
 		
 //rodadas---------------------------------------------------------
 		while(comando != "e" && ruuning) {
-			//remove o heroi do mapa
-			mapa.removeHeroi();
 			//lê o movimento do jogador
 			System.out.println("Qual sua ação?:");
 			System.out.print("| Opção 1 - Movimentar        |\n");

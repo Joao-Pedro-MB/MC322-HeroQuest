@@ -42,14 +42,15 @@ public class Heroi extends Prop {
 		
 	}
 	
-	//TODO
 	private void buscaItem(Mapa mapa) {
-		for (int i = 0 ; i < 5 ; i++) {
-			if (mapa.getSurroudings(0, i) != null) {
-				System.out.println("Tem algo aqui");
+		for (int i = -2 ; i < 3 ; i++) {
+			if (mapa.getSurroudings(0, i) != null && i != 0) {
+				mapa.revelaBau(0, i);
+				mapa.revelaArmadilha(0, i);
 			}
-			if (mapa.getSurroudings(i, 0) != null) {
-				System.out.println("Tem algo aqui");
+			if (mapa.getSurroudings(i, 0) != null && i != 0) {
+				mapa.revelaBau(i, 0);
+				mapa.revelaArmadilha(i, 0);
 			}
 		}
 	}
@@ -100,12 +101,38 @@ public class Heroi extends Prop {
 	}
 		
 	private void usaItem() {
+		Scanner inventario = new Scanner (System.in);
+		System.out.println();
+		System.out.println("||Seu inventário, para usar um item digite o número dele, ou 0 para sair||");
+		int i = 1;
+		
 		for(String item:Itens) {
-            System.out.println(item);
+            System.out.println(i++ + " " + item);
         } 
-		//for(Pocao pocoes:Pocoes) {
-        //    System.out.println(pocoes.getNome());
-        //}
+		for(Arma arma:Armas) {
+            System.out.println(i++ + " " + arma.getNome());
+        }
+		for(Armadura armadura:Armaduras) {
+            System.out.println(i++ + " " + armadura.getNome());
+        }
+		System.out.println(Itens.size() + " " + Armas.size() + " " + Armaduras.size());
+		int usar = inventario.nextInt();
+			
+		if(usar == 0) {
+			return;
+		}
+		else if(usar <= Itens.size()) {
+			System.out.println("Você usou " + Itens.get(i - 1));
+		}
+		else if(usar <= Itens.size() + Armas.size()) {
+			System.out.println("Você usou " + Armas.get(usar - Itens.size() - 1).getNome());
+			EquipaArma(Armas.get(usar - Itens.size() - 1));
+		}
+		else if(usar <= Itens.size() + Armas.size() + Armaduras.size()) {
+			System.out.println("Você usou " + Armaduras.get(usar - Itens.size() - Armas.size() - 1).getNome());
+			EquipaArmadura(Armaduras.get(usar - Itens.size() - Armas.size() - 1));
+		}
+		
 	}
 	
 	public void movimenta(Mapa mapa) {
@@ -144,10 +171,12 @@ public class Heroi extends Prop {
 		
 	}
 	
+	
 	public void printStatus() {
 		System.out.println("Jogador(a): " + nome + ", Arma1: " + ((atualArma1 != null) ? atualArma1.getNome(): "punho") + " Arma 2: " + ((atualArma2 != null) ? atualArma2.getNome(): "punho") + ", Vida: " + pontosVida + ", ouro: " + moedasOuro);
 		System.out.println("Classe: " + classe + ", Armadura: "+ ((atualArmadura != null) ? atualArmadura.getNome(): "trapos"));
 	}
+	
 	
 	public void addArma(Arma arma) {
 		if(podeUsar(arma)) {
@@ -155,12 +184,14 @@ public class Heroi extends Prop {
 		}
 	}
 	
+	
 	public boolean podeUsar(Arma arma) {
 		if(!arma.ehRestrita() || classe.compareTo("Feiticeiro") != 0) {
 			return true;
 		}
 		return false;
 	}
+	
 	
 	public void EquipaArma(Arma arma) {
 		if(!Armas.contains(arma)) {
@@ -180,10 +211,12 @@ public class Heroi extends Prop {
 		}
 	}
 	
+	
 	public void DesequipaArma() {
 		atualArma1 = null;
 		atualArma2 = null;
 	}
+	
 	
 	public void EquipaArmadura(Armadura armadura) {
 		if(!Armaduras.contains(armadura)) {
@@ -191,10 +224,12 @@ public class Heroi extends Prop {
 		}
 		atualArmadura = armadura;
 	}
+	
 
 	public void DesequipaArmadura() {
 		atualArmadura = null;
 	}
+	
 	
 	public void removeArma(Arma arma) {
 		if (Armas.contains(arma)) {
@@ -202,23 +237,28 @@ public class Heroi extends Prop {
 		}
 	}
 	
+	
 	public void addArmadura(Armadura armadura) {
 		Armaduras.add(armadura);
 	}
+	
 	
 	public void removeArmadura(Armadura armadura) {
 		if (Armaduras.contains(armadura)) {
 			Armaduras.remove(armadura);
 		}
 	}
+	
 
 	public void addVida(int pontos) {
 		this.pontosVida += pontos;
 	}
 	
+	
 	public void recebeDano(int dano) {
 		pontosVida -= dano;
 	}
+	
 	
 	//public void removePocao(Pocao pocao) {
 	//	if (Pocoes.contains(pocao)) {

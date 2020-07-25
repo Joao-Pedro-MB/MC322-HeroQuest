@@ -308,7 +308,32 @@ public class Mapa {
 	
 	//pega o entorno do jogador
 	public Prop getSurroudings(int y, int x) {
-		return this.map[heroiY + y][heroiX + x];
+		try {
+			return this.map[heroiY + y][heroiX + x];
+		}
+		catch(IndexOutOfBoundsException e) {
+			return this.map[heroiY][heroiX];
+		}
+	}
+	
+	public void revelaArmadilha(int y, int x) {
+		try {
+			Armadilha armadilha = (Armadilha)this.map[heroiY + y][heroiX + x];
+			armadilha.revelado();
+		}
+		catch(Exception e) {
+			System.out.println("Voce não achou nada");
+		}
+	}
+	
+	public void revelaBau(int y, int x) {
+		try {
+			Baus bau = (Baus)this.map[heroiY + y][heroiX + x];
+			bau.revelado();
+		}
+		catch(Exception e) {
+			System.out.println("Voce não achou nada");
+		}
 	}
 	
 	//deleta props do mapa

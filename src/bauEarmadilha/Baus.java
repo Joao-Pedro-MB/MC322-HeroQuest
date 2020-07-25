@@ -11,7 +11,7 @@ public class Baus extends Prop{
 	Random sorteio = new Random();
 	
 	public Baus(int x, int y){
-		super("CC", y, x);
+		super("░░", y, x);
 		
 	}
 	
@@ -37,5 +37,9 @@ public class Baus extends Prop{
 		}
 		
 		heroi.addOuro(resultado);
+	}
+	
+	public void revelado() {
+		this.symbol = "CC";
 	}
 }
