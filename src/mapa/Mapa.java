@@ -7,6 +7,7 @@ public class Mapa {
 	Prop[][] map;
 	String[][] wallmap;
 	Boolean[][] heromap;
+	int[][] roomsidentifier;
 	int lineLength;
 	int collumnLength;
 	int heroiX = 0, heroiY = 0;
@@ -17,10 +18,12 @@ public class Mapa {
 		this.map = new Prop[lineLength][collumnLength];
 		this.wallmap = new String[lineLength][collumnLength];
 		this.heromap = new Boolean[lineLength][collumnLength];
+		this.roomsidentifier = new int[lineLength][collumnLength];
 		for (int i = 0 ; i < lineLength ; i++) {
 			for (int j = 0 ; j < collumnLength ; j++) {
 				this.map[i][j] = null;
 				this.wallmap[i][j] = "";
+				this.roomsidentifier[i][j] = 0;
 			}
 		}
 	}
@@ -50,46 +53,16 @@ public class Mapa {
 		wallmap[positionX][positionY] = opcao;
 	}
 	
-	//imprime mapa de itens
-	public void printMap () {
-		System.out.println();
-		System.out.println();
-		for (int i = 0 ; i < map.length ; i++) {
-			for (int j = 0 ; j < map[0].length ; j++) {
-				try {
-					this.map[i][j].print();
-				}
-				catch(NullPointerException e) {
-					if(heromap[i][j]) {
-						System.out.printf("░░");
-					}
-					else {
-						System.out.printf("▓▓");
-					}
-				}
-				
-				if(wallmap[i][j].equals("lado") || wallmap[i][j].equals("baixolado")) {
-					System.out.printf("║");
-				}
-				else {
-					System.out.printf(" ");
-				}
+	public void identifyRooms(int id, int yStart, int yEnd, int xStart, int xEnd) {
+		for (int i=xStart; i<=xEnd; i++) {
+			for(int j=yStart; j<=yEnd; j++) {
+				roomsidentifier[i][j] = id;
 			}
-			System.out.println();
-			for(int j = 0; j < map[0].length ; j++) {
-				if(wallmap[i][j].equals("baixo") || wallmap[i][j].equals("baixolado")) {
-					System.out.printf("==");
-				}
-				else {
-					System.out.printf("  ");
-				}
-				System.out.printf(" ");
-			}
-			System.out.println();
 		}
 	}
 	
-	public void printHeroMap () {
+	//imprime mapa de itens
+	public void printMap () {
 		System.out.println();
 		System.out.println();
 		for (int i = 0 ; i < map.length ; i++) {
@@ -164,11 +137,11 @@ public class Mapa {
 			heroiY -= pos[0];
 			map[heroiY][heroiX] = heroi;
 			refreshHeroMap();
-			printHeroMapAAA();			
+			//printHeroMapAAA();			
 			return 1;
  		}
 		refreshHeroMap();
-		printHeroMapAAA();	
+		//printHeroMapAAA();	
 		return 0;
 	}
 	
@@ -286,17 +259,32 @@ public class Mapa {
 			
 		}
 		
+		//Visão dentro de salas
+		int id = roomsidentifier[heroiY][heroiX];
+		if(id != 0) {
+			for (int x = 0 ; x < lineLength ; x++) {
+				for (int y = 0 ; y < collumnLength ; y++) {
+					if(roomsidentifier[x][y] == id) {
+						heromap[x][y] = true;
+					}
+				}
+			}
+		}
+		
 	}
 	
 	public void printHeroMapAAA() {
 		for (int i = 0 ; i < lineLength ; i++) {
 			for (int j = 0 ; j < collumnLength ; j++) {
+				//System.out.printf(roomsidentifier[i][j]+" ");
+			
 				if(heromap[i][j] == true) {
 					System.out.printf("1 ");
 				}
 				else {
 					System.out.printf("0 ");
 				}
+				
 			}
 			System.out.println(" ");
 		}

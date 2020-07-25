@@ -141,7 +141,7 @@ public class Heroi extends Prop {
 			
 			mapa.printMap();
 		}
-		acao.close();
+		//acao.close();
 		
 	}
 	

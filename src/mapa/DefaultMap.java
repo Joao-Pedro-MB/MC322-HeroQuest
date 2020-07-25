@@ -308,6 +308,32 @@ public class DefaultMap {
 		mapa.includeDoor(16, 20, "portalado");
 		mapa.includeDoor(17, 2, "portabaixo");
 		mapa.includeDoor(17, 3, "portabaixo");
+		
+		mapa.identifyRooms(1, 1, 4, 1, 3);
+		mapa.identifyRooms(2, 5, 8, 1, 3);
+		mapa.identifyRooms(3, 9, 11, 1, 5);
+		mapa.identifyRooms(4, 14, 16, 1, 5);
+		mapa.identifyRooms(5, 17, 20, 1, 4);
+		mapa.identifyRooms(6, 21, 24, 1, 4);
+		mapa.identifyRooms(7, 1, 4, 4, 8);
+		mapa.identifyRooms(8, 5, 8, 4, 8);
+		mapa.identifyRooms(9, 17, 20, 5, 8);
+		mapa.identifyRooms(10, 21, 24, 5, 8);
+		mapa.identifyRooms(11, 10, 15, 7, 11);
+		mapa.identifyRooms(12, 1, 4, 10, 13);
+		mapa.identifyRooms(13, 5, 6, 10, 12);
+		mapa.identifyRooms(14, 7, 8, 10, 12);
+		mapa.identifyRooms(15, 17, 17, 10, 12);
+		mapa.identifyRooms(15, 18, 20, 10, 13);
+		mapa.identifyRooms(16, 21, 24, 10, 13);
+		mapa.identifyRooms(17, 1, 4, 14, 17);
+		mapa.identifyRooms(18, 5, 8, 13, 17);
+		mapa.identifyRooms(19, 9, 11, 13, 17);
+		mapa.identifyRooms(20, 14, 17, 13, 17);
+		mapa.identifyRooms(21, 18, 20, 14, 17);
+		mapa.identifyRooms(22, 21, 24, 14, 17);
+		
+
 
 	}
 }
