@@ -4,11 +4,11 @@ import heroi.Heroi;
 
 public class Armadilha extends Prop{
 	
-	Armadilha(int x, int y){
-		super("XX", y, x);
+	public Armadilha(int x, int y){
+		super("░░", y, x);
 	}
 	
-	void ativar(Heroi heroi) {
+	public void ativar(Heroi heroi) {
 		heroi.recebeDano(3);
 	}
 }

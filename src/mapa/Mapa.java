@@ -1,5 +1,6 @@
 package mapa;
 import heroi.Heroi;
+import bauEarmadilha.*;
 import java.lang.IndexOutOfBoundsException;
 import exception.IllegalMoveException;
 
@@ -43,6 +44,16 @@ public class Mapa {
 			item.print();
 		}
 	}*/
+	
+	public void includeBau(int x, int y) {
+		Prop bau = new Baus(x, y);
+		map[y][x] = bau;
+	}
+	
+	public void includeArmadilha(int x, int y) {
+		Prop armadilha = new Armadilha(x, y);
+		map[y][x] = armadilha;
+	}
 	
 	//adiciona paredes ao mapa
 	public void includeWall(int positionX, int positionY, String opcao) {
@@ -104,6 +115,10 @@ public class Mapa {
 		String move="";
 		heroiX += pos[1];
 		heroiY += pos[0];
+		
+		checaArmadilha((Heroi)heroi);
+		checaBau((Heroi)heroi);
+		
 		if(pos[1] == 1) {
 			move = "direita";
 		}
@@ -306,6 +321,29 @@ public class Mapa {
 		}
 	}
 	
+	private void checaArmadilha(Heroi heroi) {
+		try {
+			Prop armadilha = map[heroiY][heroiX];
+			Armadilha aux = (Armadilha)armadilha;
+			aux.ativar(heroi);
+			System.out.println("Você encontrou uma armadilha");
+		}
+		catch(Exception e) {
+			return;
+		}
+	}
+
+	private void checaBau(Heroi heroi) {
+		try {
+			Prop bau = map[heroiY][heroiX];
+			Baus aux = (Baus)bau;
+			aux.ativar(heroi);
+			System.out.println("Você encontrou um bau");
+		}
+		catch(Exception e) {
+			return;
+		}
+	}
 }
 
 

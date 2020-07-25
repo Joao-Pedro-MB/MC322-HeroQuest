@@ -333,5 +333,8 @@ public class DefaultMap {
 		mapa.identifyRooms(21, 18, 20, 14, 17);
 		mapa.identifyRooms(22, 21, 24, 14, 17);
 		
+		mapa.includeBau(1, 0);
+		mapa.includeArmadilha(0, 1);
+		
 	}
 }
