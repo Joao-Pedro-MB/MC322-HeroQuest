@@ -7,12 +7,8 @@ import mapa.Mapa;
 
 
 public class Monstro extends Personagem {
-	private String nome;
-	private String simbolo;
-	private int ataque, defesa, pontosVida, inteligencia;
-	protected int movimento;
-	private String arma;
-	private int movimento;
+
+	int movimento;
 	private Arma arma;
 	private boolean vivo;
 	
