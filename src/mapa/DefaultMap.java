@@ -335,6 +335,7 @@ public class DefaultMap {
 		
 		mapa.includeBau(1, 0);
 		mapa.includeArmadilha(0, 1);
+		mapa.includeMonstro(5,0);
 		
 	}
 }

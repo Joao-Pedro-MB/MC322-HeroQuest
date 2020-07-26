@@ -1,5 +1,6 @@
 package mapa;
 import heroi.Heroi;
+import heroi.Monstro;
 import bauEarmadilha.*;
 import java.lang.IndexOutOfBoundsException;
 import exception.IllegalMoveException;
@@ -53,6 +54,11 @@ public class Mapa {
 	public void includeArmadilha(int x, int y) {
 		Prop armadilha = new Armadilha(x, y);
 		map[y][x] = armadilha;
+	}
+	
+	public void includeMonstro(int x, int y) {
+		Prop monstro = new Monstro ("monstro","MM", 2, 1, 1, 1, "punho");
+		map[y][x] = monstro;
 	}
 	
 	//adiciona paredes ao mapa
