@@ -1,7 +1,9 @@
 package itens.magias;
 import java.util.Scanner;
+import java.util.Random;
 import mapa.Mapa;
 import heroi.Heroi;
+import heroi.Monstro;
 
 public class Teleporte implements Magia {
 	
@@ -16,6 +18,19 @@ public class Teleporte implements Magia {
 		
 		try {
 			System.out.println("Digite a posição x e y do seu teleporte:");
+			int x = pos.nextInt();
+			int y = pos.nextInt();
+			mapa.teleportaHeroi(x, y);
+		}
+		catch(Exception e) {
+			System.out.println("Input inválido");
+		}
+		//pos.close();
+	}
+	
+	public void usaMagia(Monstro monstro, Mapa mapa) {
+		Random pos = new Random(20);
+		try {
 			int x = pos.nextInt();
 			int y = pos.nextInt();
 			mapa.teleportaHeroi(x, y);

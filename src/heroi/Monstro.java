@@ -1,10 +1,6 @@
 package heroi;
-
-
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.Scanner;
-
 import itens.Arma;
 import itens.magias.Magia;
 import mapa.Mapa;
@@ -24,15 +20,12 @@ public class Monstro extends Personagem {
 	}
 	
 	protected void ataca(Mapa mapa) {
-		int ataque = 0, bonus = 0;
-		Dice dado = new Dice();
-		
-		if(arma != null) {
-			bonus = arma.getBonus();
+		if (this.nome.compareTo("esqueletoMago") == 0) {
 		}
 		
-		ataque = dadosAtaque + bonus;
-		
+		int ataque = dadosAtaque;
+		Dice dado = new Dice();
+
 		for (int i = -5 ; i < 6 ; i++) {
 			if (mapa.getSurroudings(0, i, this) != null) {
 			
@@ -171,17 +164,20 @@ public class Monstro extends Personagem {
 		return false;
 	}
 	
-	/*private void usaMagia(Mapa mapa) {
+	private void usaMagia(Mapa mapa, Monstro monstro) {
 
 		if(Magias.size() > 0) {
-			Magias.get(0).usaMagia(heroi, mapa);
+			Magias.get(0).usaMagia(this, mapa);
 			Magias.remove(0);
 		}
-	}*/
+	}
 	
 	public void addMagia(Magia magia) {
 		Magias.add(magia);
 	}
 	
+	public void addVida(int pontos) {
+		this.pontosVida += pontos;
+	}
 	
 }
