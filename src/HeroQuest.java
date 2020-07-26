@@ -130,10 +130,10 @@ public class HeroQuest {
 		
 		//Fim de jogo
 		System.out.print("\n \n \n");
-		System.out.print("| ▓▓    ▓▓  ▓▓  ▓▓   ▓▓   |\n");
-		System.out.print("| ▓▓ ▓▓ ▓▓  ▓▓  ▓▓▓▓ ▓▓     |\n");
-		System.out.print("| ▓▓ ▓▓ ▓▓  ▓▓  ▓▓ ▓▓▓▓    |\n");
-		System.out.print("| ▓▓▓  ▓▓▓  ▓▓  ▓▓  ▓▓▓    |\n");
+		System.out.print("| ▓▓    ▓▓  ▓▓  ▓▓   ▓▓  |\n");
+		System.out.print("| ▓▓ ▓▓ ▓▓  ▓▓  ▓▓▓▓ ▓▓  |\n");
+		System.out.print("| ▓▓ ▓▓ ▓▓  ▓▓  ▓▓ ▓▓▓▓  |\n");
+		System.out.print("| ▓▓▓  ▓▓▓  ▓▓  ▓▓  ▓▓▓  |\n");
 		System.out.print("| ▓▓    ▓▓  ▓▓  ▓▓   ▓▓  |\n");
 		
 		

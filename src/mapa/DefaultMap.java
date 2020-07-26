@@ -343,6 +343,5 @@ public class DefaultMap {
 		mapa.includeEsqueleto(8,14);
 		mapa.includeEsqueletoMago(23,8);
 		mapa.includeEsqueletoMago(3,5);
-		
 	}
 }

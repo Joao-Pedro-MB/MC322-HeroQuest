@@ -249,7 +249,12 @@ public class Mapa {
 	
 	public void movimentaMonstros() {
 		for(int i=0; i<monstros.size(); i++) {
-			monstros.get(i).movimenta(this);
+			if(monstros.get(i).estavivo()) {
+				monstros.get(i).movimenta(this);
+			}
+			else {
+				removeMonstro(monstros.get(i));
+			}
 		}
 		refreshHeroMap();
 	}

@@ -231,10 +231,11 @@ public class Heroi extends Prop {
 		Scanner acao = new Scanner (System.in);
 		Dice dice = new Dice();
 		int moves = dice.rollDice(2);
-		System.out.println("Você pode avançar " + moves + " vezes");
 		String move;
 		
 		for (int i = moves ; i > 0 ; i--) {
+			System.out.println("Você pode avançar " + moves + " vezes");
+			System.out.println("Utilize w,a,s,d para se movimentar e p para parar");
 			mapa.removeHeroi();
 			move = acao.nextLine(); 
 			int[] pos = {0,0};
@@ -250,6 +251,9 @@ public class Heroi extends Prop {
 			}
 			else if(move.compareTo("d") == 0) {
 				pos[1]= 1;
+			}
+			else if(move.compareTo("p") == 0) {
+				i= 0;
 			}
 			else if(move.compareTo("e") == 0) {
 				mapa.addHeroi(pos, this);
