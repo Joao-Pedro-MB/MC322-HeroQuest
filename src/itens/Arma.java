@@ -14,7 +14,7 @@ public class Arma implements Itens{
 		this.feiticeiroRestrito = feiticeiroRestrito;
 	}
 	
-	int getBonus() {
+	public int getBonus() {
 		return dadosAtaque;
 	}
 	
@@ -28,5 +28,9 @@ public class Arma implements Itens{
 	
 	public boolean ehRestrita() {
 		return feiticeiroRestrito;
+	}
+	
+	public boolean ehLongoAlcance() {
+		return longoAlcance;
 	}
 }

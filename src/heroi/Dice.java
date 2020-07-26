@@ -20,7 +20,7 @@ public class Dice {
 	}
 	
 	//dado de ataque com 50% de chance de ataque
-	int rollAttack(int numOfDices) {
+	public int rollAttack(int numOfDices) {
 		result = 0;
 		
 		for(int i = 0 ; i < numOfDices ; i++) {

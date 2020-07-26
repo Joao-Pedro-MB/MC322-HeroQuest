@@ -21,16 +21,64 @@ public class Monstro extends Personagem {
 		this.arma = arma;
 	}
 	
-	public void ataca(int dano) {
-		
+	private void ataca(Mapa mapa) {
+		for (int i = -5 ; i < 6 ; i++) {
+			if (mapa.getSurroudings(0, i) != null) {
+				if (arma.ehLongoAlcance()) {
+					try {
+						Dice dado = new Dice();
+						Heroi alvo = (Heroi)mapa.getSurroudings(0, i);
+						int ataque = ataque + arma.getBonus();
+						alvo.sofreDano(dado.rollAttack(ataque));
+					}
+					catch(Exception e) {
+					}
+				}
+				else if (i <= 1) {
+					try {
+						Dice dado = new Dice();
+						Heroi alvo = (Heroi)mapa.getSurroudings(0, i);
+						int ataque = ataque + arma.getBonus();
+						alvo.sofreDano(dado.rollAttack(ataque));
+					}
+					catch(Exception e) {
+					}
+				}
+			}
+			else if (mapa.getSurroudings(i, 0) != null) {
+				if (arma.ehLongoAlcance()) {
+					try {
+						Dice dado = new Dice();
+						Heroi alvo = (Heroi)mapa.getSurroudings(0, i);
+						int ataque = ataque + arma.getBonus();
+						alvo.sofreDano(dado.rollAttack(ataque));
+					}
+					catch(Exception e) {
+					}
+				}
+				else if (i <= 1) {
+					try {
+						Dice dado = new Dice();
+						Heroi alvo = (Heroi)mapa.getSurroudings(0, i);
+						int ataque = ataque + arma.getBonus();
+						alvo.sofreDano(dado.rollAttack(ataque));
+					}
+					catch(Exception e) {
+					}
+				}
+			}
+		}
 	}
 	
 	public void sofreDano(int dano) {
-		this.pontosVida-=pontosVida;
+		int defesa = defende();
+		
+		this.pontosVida-=(dano-defesa);
 	}
 	
-	public void defende() {
-		//rola dado de defesa
+	private int defende() {
+		Dice defende = new Dice();
+		return defende.rollMonsterDefense(defesa);
 	}
 	
 	

@@ -58,16 +58,65 @@ public class Heroi extends Prop {
 	//depois realiza o ataque
 	//TODO
 	private void ataca(Mapa mapa) {
-		for (int i = 0 ; i < 5 ; i++) {
+		for (int i = -5 ; i < 6 ; i++) {
 			if (mapa.getSurroudings(0, i) != null) {
-				System.out.println("Tem algo aqui");
+				if (atualArma1.ehLongoAlcance() || atualArma2.ehLongoAlcance()) {
+					try {
+						Dice dado = new Dice();
+						Monstro alvo = (Monstro)mapa.getSurroudings(0, i);
+						int ataque = dadosAtaque + atualArma1.getBonus();
+						alvo.sofreDano(dado.rollAttack(ataque));
+					}
+					catch(Exception e) {
+					}
+				}
+				else if (i <= 1) {
+					try {
+						Dice dado = new Dice();
+						Monstro alvo = (Monstro)mapa.getSurroudings(0, i);
+						int ataque = dadosAtaque + atualArma1.getBonus();
+						alvo.sofreDano(dado.rollAttack(ataque));
+					}
+					catch(Exception e) {
+					}
+				}
 			}
-			if (mapa.getSurroudings(i, 0) != null) {
-				System.out.println("Tem algo aqui");
+			else if (mapa.getSurroudings(i, 0) != null) {
+				if (atualArma1.ehLongoAlcance() || atualArma2.ehLongoAlcance()) {
+					try {
+						Dice dado = new Dice();
+						Monstro alvo = (Monstro)mapa.getSurroudings(0, i);
+						int ataque = dadosAtaque + atualArma1.getBonus();
+						alvo.sofreDano(dado.rollAttack(ataque));
+					}
+					catch(Exception e) {
+					}
+				}
+			}
+			else if (i <= 1) {
+				try {
+					Dice dado = new Dice();
+					Monstro alvo = (Monstro)mapa.getSurroudings(0, i);
+					int ataque = dadosAtaque + atualArma1.getBonus();
+					alvo.sofreDano(dado.rollAttack(ataque));
+				}
+				catch(Exception e) {
+				}
 			}
 		}
 	}
-
+	
+	public void sofreDano(int dano) {
+		int defesa = defende();
+		
+		this.pontosVida-=(dano-defesa);
+	}
+	
+	private int defende() {
+		Dice defende = new Dice();
+		return defende.rollHeroDefense(dadosDefesa);
+	}
+	
 	public void addOuro(int quantidade) {
 		this.moedasOuro+=quantidade;
 	}
