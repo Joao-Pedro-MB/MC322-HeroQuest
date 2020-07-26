@@ -127,6 +127,18 @@ public class HeroQuest {
 		}
 //rodadas---------------------------------------------------------
 		
+		
+		//Fim de jogo
+		System.out.print("\n \n \n");
+		System.out.print("| ▓▓    ▓▓  ▓▓  ▓▓   ▓▓   |\n");
+		System.out.print("| ▓▓ ▓▓ ▓▓  ▓▓  ▓▓▓▓ ▓▓     |\n");
+		System.out.print("| ▓▓ ▓▓ ▓▓  ▓▓  ▓▓ ▓▓▓▓    |\n");
+		System.out.print("| ▓▓▓  ▓▓▓  ▓▓  ▓▓  ▓▓▓    |\n");
+		System.out.print("| ▓▓    ▓▓  ▓▓  ▓▓   ▓▓  |\n");
+		
+		
+		
+		
 		menu.close();
 		
 	}
