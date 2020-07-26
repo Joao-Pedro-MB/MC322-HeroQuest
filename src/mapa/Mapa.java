@@ -86,7 +86,7 @@ public class Mapa {
 						System.out.printf("░░");
 					}
 					else {
-						System.out.printf("▓▓");
+						System.out.printf("::");
 					}
 				}
 				

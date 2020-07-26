@@ -19,7 +19,6 @@ public class Heroi extends Prop {
 	private Arma atualArma1 = null, atualArma2 = null;
 	private Armadura atualArmadura = null;
 	
-	
 	public Heroi(String nome, String classe, int dadosAtaque, int dadosDefesa, int pontosVida, int pontosInteligencia) {
 		super("HH", 0, 0);
 		this.classe = classe;
@@ -159,6 +158,11 @@ public class Heroi extends Prop {
 			else if(move.compareTo("d") == 0) {
 				pos[1]= 1;
 			}
+			else if(move.compareTo("e") == 0) {
+				mapa.addHeroi(pos, this);
+				mapa.printMap();
+				return;
+			}
 			else {
 				pos[0]= 1;
 			}
@@ -171,12 +175,10 @@ public class Heroi extends Prop {
 		
 	}
 	
-	
 	public void printStatus() {
 		System.out.println("Jogador(a): " + nome + ", Arma1: " + ((atualArma1 != null) ? atualArma1.getNome(): "punho") + " Arma 2: " + ((atualArma2 != null) ? atualArma2.getNome(): "punho") + ", Vida: " + pontosVida + ", ouro: " + moedasOuro);
 		System.out.println("Classe: " + classe + ", Armadura: "+ ((atualArmadura != null) ? atualArmadura.getNome(): "trapos"));
 	}
-	
 	
 	public void addArma(Arma arma) {
 		if(podeUsar(arma)) {
@@ -184,14 +186,12 @@ public class Heroi extends Prop {
 		}
 	}
 	
-	
 	public boolean podeUsar(Arma arma) {
 		if(!arma.ehRestrita() || classe.compareTo("Feiticeiro") != 0) {
 			return true;
 		}
 		return false;
 	}
-	
 	
 	public void EquipaArma(Arma arma) {
 		if(!Armas.contains(arma)) {
@@ -211,12 +211,10 @@ public class Heroi extends Prop {
 		}
 	}
 	
-	
 	public void DesequipaArma() {
 		atualArma1 = null;
 		atualArma2 = null;
 	}
-	
 	
 	public void EquipaArmadura(Armadura armadura) {
 		if(!Armaduras.contains(armadura)) {
@@ -224,12 +222,10 @@ public class Heroi extends Prop {
 		}
 		atualArmadura = armadura;
 	}
-	
 
 	public void DesequipaArmadura() {
 		atualArmadura = null;
 	}
-	
 	
 	public void removeArma(Arma arma) {
 		if (Armas.contains(arma)) {
@@ -237,23 +233,19 @@ public class Heroi extends Prop {
 		}
 	}
 	
-	
 	public void addArmadura(Armadura armadura) {
 		Armaduras.add(armadura);
 	}
-	
 	
 	public void removeArmadura(Armadura armadura) {
 		if (Armaduras.contains(armadura)) {
 			Armaduras.remove(armadura);
 		}
 	}
-	
 
 	public void addVida(int pontos) {
 		this.pontosVida += pontos;
 	}
-	
 	
 	public void recebeDano(int dano) {
 		pontosVida -= dano;
