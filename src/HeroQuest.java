@@ -95,24 +95,27 @@ public class HeroQuest {
 		
 //rodadas---------------------------------------------------------
 		while(comando != "e" && running) {
-			//lê o movimento do jogador
-			boolean prosseguir = false;
-			while(prosseguir != true) {
-				System.out.println("Qual sua ação?:");
-				System.out.print("| Opção 1 - Movimentar        |\n");
-				System.out.print("| Opção 2 - Atacar            |\n");
-				System.out.print("| Opção 3 - Usar Item         |\n");
-				System.out.print("| Opção 4 - Buscar Item       |\n");
-				System.out.print("| Opção 5 - Usar magia        |\n");
-				comando = menu.nextLine();	
-				if(comando.equals("1") || comando.equals("2") || comando.equals("3")
-					|| comando.equals("4") || comando.equals("5")) {
+			
+			for(int i = 0 ; i < 2 ; i++) {
+				//lê o movimento do jogador
+				boolean prosseguir = false;
+				while(prosseguir != true) {
+					System.out.println("Qual sua ação?:");
+					System.out.print("| Opção 1 - Movimentar        |\n");
+					System.out.print("| Opção 2 - Atacar            |\n");
+					System.out.print("| Opção 3 - Usar Item         |\n");
+					System.out.print("| Opção 4 - Buscar Item       |\n");
+					System.out.print("| Opção 5 - Usar magia        |\n");
+					comando = menu.nextLine();	
+					if(comando.equals("1") || comando.equals("2") || comando.equals("3")
+						|| comando.equals("4") || comando.equals("5")) {
 					
-					prosseguir = true;
+						prosseguir = true;
+					}
 				}
+				//movimenta o heroi
+				heroi.move(comando, mapa);
 			}
-			//movimenta o heroi
-			heroi.move(comando, mapa);
 			//movimento os monstros
 			mapa.movimentaMonstros();
 			//imprime Mapa

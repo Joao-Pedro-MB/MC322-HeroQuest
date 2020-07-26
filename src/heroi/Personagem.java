@@ -1,8 +1,4 @@
 package heroi;
-import java.util.ArrayList;
-import java.util.Scanner;
-import java.util.Random;
-import itens.*;
 import mapa.*;
 
 
@@ -22,21 +18,4 @@ public class Personagem extends Prop {
 		this.pontosVida = pontosVida;
 		this.pontosInteligencia = pontosInteligencia;
 	}
-
-	//TODO
-	private void ataca(Mapa mapa) {
-
-	}
-	
-	private void defende() {
-		
-	}
-
-	private void sofreDano(int dano) {
-		pontosVida-=dano;
-	}
-	
-	
-	
-	
 }

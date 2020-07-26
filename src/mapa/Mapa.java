@@ -424,8 +424,16 @@ public class Mapa {
 	//pega o entorno do jogador
 	public Prop getSurroudings(int y, int x) {
 		try {
-			System.out.println("Posição x: "+ (heroiX+x) + ", Posição y: " + (heroiY+y));
 			return this.map[heroiY + y][heroiX + x];
+		}
+		catch(IndexOutOfBoundsException e) {
+			return null;
+		}
+	}
+	
+	public Prop getSurroudings(int y, int x, Monstro monstro) {
+		try {
+			return this.map[monstro.getPosY() + y][monstro.getPosX() + x];
 		}
 		catch(IndexOutOfBoundsException e) {
 			return null;

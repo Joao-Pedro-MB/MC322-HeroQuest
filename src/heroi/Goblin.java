@@ -17,10 +17,10 @@ public class Goblin extends Monstro{
 	
 	@Override
 	public void movimenta(Mapa mapa) {
+		ataca(mapa);
 		Random rand = new Random();
 		int moves = rand.nextInt(this.movimento);
 		moves += 4;
-		System.out.println("Monstro se movendo");
 		
 		int contmovimentoimpossivel=0;
 		for (int i = moves ; i >= 0 ; i--) {

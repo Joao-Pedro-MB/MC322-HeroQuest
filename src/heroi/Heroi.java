@@ -48,7 +48,7 @@ public class Heroi extends Prop {
 
 	//avalia uma distancia pré definida na horizontal e vertical
 	//depois realiza o ataque
-	//TODO
+
 	private void ataca(Mapa mapa) {
 		int ataque = 0, bonus = 0;
 		Dice dado = new Dice();
@@ -121,8 +121,11 @@ public class Heroi extends Prop {
 	
 	public void sofreDano(int dano) {
 		int defesa = defende();
+		System.out.println("Você sofreu " + dano+" de dano e defendeu "+ defesa);
 		
-		this.pontosVida-=(dano-defesa);
+		if(dano > defesa) {
+			this.pontosVida-=(dano-defesa);
+		}
 	}
 	
 	private int defende() {
@@ -157,8 +160,12 @@ public class Heroi extends Prop {
 				buscaItem(mapa);
 				return;
 			case "5":
-				System.out.println("Você quer buscar Itens");
-				usaMagia(mapa);
+				System.out.println("Você quer usar magias");
+				if(classe.compareTo("Feiticeiro") == 0) {
+					usaMagia(mapa);
+				}else {
+					System.out.println("Apenas magos e elfos podem usar magias");
+				}
 				return;
 			default:
 				return;
@@ -180,7 +187,6 @@ public class Heroi extends Prop {
 		for(Armadura armadura:Armaduras) {
             System.out.println(i++ + " " + armadura.getNome());
         }
-		System.out.println(Itens.size() + " " + Armas.size() + " " + Armaduras.size());
 		int usar = inventario.nextInt();
 			
 		if(usar == 0) {
