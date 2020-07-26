@@ -5,6 +5,7 @@ import bauEarmadilha.*;
 import java.lang.IndexOutOfBoundsException;
 import exception.IllegalMoveException;
 import java.util.ArrayList;
+import heroi.*;
 
 public class Mapa {
 	Prop[][] map;
@@ -58,10 +59,22 @@ public class Mapa {
 		map[y][x] = armadilha;
 	}
 	
-	public void includeMonstro(int x, int y) {
-		Monstro monstro = new Monstro (y,x-3,"monstro","MM", 2, 1, 1, 1, 6, "punho");
+	public void includeEsqueleto(int x, int y) {
+		Monstro monstro = new Esqueleto (y,x);
 		monstros.add(monstro);
-		map[y][x-3] = monstro;
+		map[y][x] = monstro;
+	}
+	
+	public void includeEsqueletoMago(int x, int y) {
+		Monstro monstro = new EsqueletoMago (y,x);
+		monstros.add(monstro);
+		map[y][x] = monstro;
+	}
+	
+	public void includeGoblin(int x, int y) {
+		Monstro monstro = new Goblin (y,x);
+		monstros.add(monstro);
+		map[y][x] = monstro;
 	}
 	
 	//adiciona paredes ao mapa
@@ -142,7 +155,10 @@ public class Mapa {
 		}
 		
 		try {
-			if((move.equals("baixo") && wallmap[heroiY-1][heroiX].equals("baixo")) || (move.equals("baixo") && wallmap[heroiY-1][heroiX].equals("baixolado"))) {
+			if(map[heroiY][heroiX] != null && !map[heroiY][heroiX].symbol.equals("░░") && !map[heroiY][heroiX].symbol.equals("CC") && !map[heroiY][heroiX].symbol.equals("XX")) {
+				throw new IllegalMoveException();
+			}
+			else if((move.equals("baixo") && wallmap[heroiY-1][heroiX].equals("baixo")) || (move.equals("baixo") && wallmap[heroiY-1][heroiX].equals("baixolado"))) {
 				throw new IllegalMoveException();
 			}
 			else if((move.equals("direita") && wallmap[heroiY][heroiX-1].equals("lado")) || (move.equals("direita") && wallmap[heroiY][heroiX-1].equals("baixolado"))) {
@@ -373,6 +389,26 @@ public class Mapa {
 			System.out.println(" ");
 		}
 		
+	}
+	
+	public boolean jogoterminou() {
+		int vivos = MonstrosRestantes();
+		System.out.println("Restam "+vivos+" monstros vivos");
+		if(vivos == 0) {
+			return true;
+		}
+		return false;
+	}
+	
+	public int MonstrosRestantes() {
+		int vivos=monstros.size();
+		for (int i=0; i<monstros.size(); i++) {
+			if(!monstros.get(i).estavivo()) {
+				vivos -= 1;
+			}
+		}
+		
+		return vivos;
 	}
 	
 	//pega o entorno do jogador

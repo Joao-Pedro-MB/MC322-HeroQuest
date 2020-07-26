@@ -54,7 +54,7 @@ public class HeroQuest {
 //inicio do jogo---------------------------------------------------
 		int[] pos = {0,0};
 		String comando = "a";
-		boolean ruuning = true;
+		boolean running = true;
 		Mapa mapa = new Mapa(19,26);
 		Heroi heroi = criarPersonagem();
 		mapa.addHeroi(pos, heroi);
@@ -69,7 +69,7 @@ public class HeroQuest {
 
 		
 //rodadas---------------------------------------------------------
-		while(comando != "e" && ruuning) {
+		while(comando != "e" && running) {
 			//lê o movimento do jogador
 			boolean prosseguir = false;
 			while(prosseguir != true) {
@@ -91,6 +91,11 @@ public class HeroQuest {
 			mapa.printMap();
 			//imprime status do herói
 			heroi.printStatus();
+			//imprime quanto falta para o jogo acabar
+			boolean endgame = mapa.jogoterminou();
+			if(endgame) {
+				running = false;
+			}
 		}
 //rodadas---------------------------------------------------------
 		

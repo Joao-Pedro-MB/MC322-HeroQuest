@@ -335,7 +335,14 @@ public class DefaultMap {
 		
 		mapa.includeBau(1, 0);
 		mapa.includeArmadilha(0, 1);
-		mapa.includeMonstro(5,0);
+		mapa.includeGoblin(5,0);
+		mapa.includeGoblin(15,13);
+		mapa.includeGoblin(7,7);
+		mapa.includeEsqueleto(9,9);
+		mapa.includeEsqueleto(13,7);
+		mapa.includeEsqueleto(8,14);
+		mapa.includeEsqueletoMago(23,8);
+		mapa.includeEsqueletoMago(3,5);
 		
 	}
 }

@@ -12,6 +12,7 @@ public class Monstro extends Personagem {
 	private int ataque, defesa, pontosVida, inteligencia;
 	private int movimento;
 	private String arma;
+	private boolean vivo;
 	
 	public Monstro(int x, int y, String nome, String simbolo, int ataque, int defesa, int pontosVida, int inteligencia, int movimento, String arma) {
 		super(x, y, nome, simbolo, "monstro", ataque, defesa, pontosVida, inteligencia);
@@ -23,6 +24,7 @@ public class Monstro extends Personagem {
 		this.inteligencia = inteligencia;
 		this.movimento = movimento;
 		this.arma = arma;
+		this.vivo = true;
 	}
 	
 	private void ataca(Mapa mapa) {
@@ -105,8 +107,14 @@ public class Monstro extends Personagem {
 	
 	public void sofreDano(int dano) {
 		int defesa = defende();
-		
 		this.pontosVida-=(dano-defesa);
+		if(this.pontosVida < 0) {
+			this.vivo = false;
+		}
+	}
+	
+	public boolean estavivo() {
+		return this.vivo;
 	}
 	
 	private int defende() {
