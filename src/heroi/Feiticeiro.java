@@ -1,6 +1,7 @@
 package heroi;
 import itens.*;
 import itens.armas.*;
+import itens.magias.*;
 
 public class Feiticeiro extends Heroi{
 
@@ -13,10 +14,10 @@ public class Feiticeiro extends Heroi{
 		this.addArma(punhal);
 		this.EquipaArma(punhal);
 		this.EquipaArma(punhal);
-		//this.addMagia("Magic Missile");
-		//this.addMagia("Magic Missile");
-		//this.addMagia("Magic Missile");
-		//this.addMagia("Fireball");
-		//this.addMagia("Teleport");
+		this.addMagia(new MissilMagico());
+		this.addMagia(new MissilMagico());
+		this.addMagia(new MissilMagico());
+		this.addMagia(new BolaDeFogo());
+		this.addMagia(new Teleporte());
 	}
 }

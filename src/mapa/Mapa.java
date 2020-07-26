@@ -101,7 +101,12 @@ public class Mapa {
 		for (int i = 0 ; i < map.length ; i++) {
 			for (int j = 0 ; j < map[0].length ; j++) {
 				try {
-					this.map[i][j].print();
+					if(heromap[i][j]) {
+						this.map[i][j].print();
+					}
+					else {
+						System.out.printf("::");
+					}
 				}
 				catch(NullPointerException e) {
 					if(heromap[i][j]) {
@@ -414,10 +419,11 @@ public class Mapa {
 	//pega o entorno do jogador
 	public Prop getSurroudings(int y, int x) {
 		try {
+			System.out.println("Posição x: "+ (heroiX+x) + ", Posição y: " + (heroiY+y));
 			return this.map[heroiY + y][heroiX + x];
 		}
 		catch(IndexOutOfBoundsException e) {
-			return this.map[heroiY][heroiX];
+			return null;
 		}
 	}
 	

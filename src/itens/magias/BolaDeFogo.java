@@ -1,16 +1,61 @@
 package itens.magias;
-import heroi.Dice;
+import heroi.Heroi;
+import heroi.Monstro;
 import mapa.Mapa;
 
-public class BolaDeFogo {
+public class BolaDeFogo implements Magia {
 	
-	BolaDeFogo(){}
+	public BolaDeFogo(){}
 	
-	void usaMagia(int x, int y, Mapa mapa) {
-		mapa[y][x].dano(6);
-		mapa[y+1][x].dano(3);
-		mapa[y-1][x].dano(3);
-		mapa[y][x+1].dano(3);
-		mapa[y][x-1].dano(3);		
+	public void usaMagia(Heroi heroi, Mapa mapa) {
+		for(int i = -5 ; i < 6 ;  i++) {
+			try {
+				Monstro alvo = (Monstro)mapa.getSurroudings(heroi.getPosY()+i, heroi.getPosX());
+				alvo.sofreDano(6);
+				checaLado(alvo, mapa);
+				System.out.println("Voce causou 6 de dano");
+			}
+			catch(Exception e) {
+				System.out.println("Inimigos fora de alcance");
+			}
+			try {
+				Monstro alvo = (Monstro)mapa.getSurroudings(heroi.getPosY(), heroi.getPosX()+i);
+				alvo.sofreDano(6);
+				System.out.println("Voce causou 6 de dano");
+				return;
+			}
+			catch(Exception e) {
+				System.out.println("Inimigos fora de alcance");
+			}
+		}
+	}
+	
+	private void checaLado(Monstro monstro, Mapa mapa) {
+		Monstro alvo1 = (Monstro)mapa.getSurroudings(monstro.getPosY()+1, monstro.getPosX());
+		Monstro alvo2 = (Monstro)mapa.getSurroudings(monstro.getPosY()-1, monstro.getPosX());
+		Monstro alvo3 = (Monstro)mapa.getSurroudings(monstro.getPosY(), monstro.getPosX()+1);
+		Monstro alvo4 = (Monstro)mapa.getSurroudings(monstro.getPosY(), monstro.getPosX()-1);
+		
+		if(alvo1 != null) {
+			alvo1.sofreDano(2);
+		System.out.println("Voce causou 2 de dano");
+		}
+		else if(alvo2 != null) {
+			alvo2.sofreDano(2);
+		System.out.println("Voce causou 2 de dano");
+		}
+		else if(alvo3 != null) {
+			alvo3.sofreDano(2);
+		System.out.println("Voce causou 2 de dano");
+		}
+		else if(alvo4 != null) {
+			alvo4.sofreDano(2);
+		System.out.println("Voce causou 2 de dano");
+		}
+		
+	}
+	
+	public String getNome() {
+		return "Bola de Fogo";
 	}
 }

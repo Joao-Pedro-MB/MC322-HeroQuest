@@ -1,6 +1,10 @@
 package itens.magias;
+import heroi.*;
+import mapa.*;
 
-interface Magia {
+public interface Magia {
 		
-	void usaMagia();
+	void usaMagia(Heroi heroi, Mapa mapa);
+	
+	String getNome();
 }

@@ -2,6 +2,7 @@ package heroi;
 import java.util.ArrayList;
 import java.util.Scanner;
 import itens.*;
+import itens.magias.*;
 import mapa.*;
 
 
@@ -13,8 +14,8 @@ public class Heroi extends Prop {
 	int totalArmas = 0, totalMagias = 0;
 	private ArrayList<Arma> Armas = new ArrayList<Arma>();
 	private ArrayList<Armadura> Armaduras = new ArrayList<Armadura>();
-	//private ArrayList<Pocao> Pocoes = new ArrayList<Pocao>();
 	private ArrayList<String> Itens = new ArrayList<String>();
+	private ArrayList<Magia> Magias = new ArrayList<Magia>();
 	private String classe;
 	private Arma atualArma1 = null, atualArma2 = null;
 	private Armadura atualArmadura = null;
@@ -28,16 +29,6 @@ public class Heroi extends Prop {
 		this.pontosVida = pontosVida;
 		this.pontosInteligencia = pontosInteligencia;
 		this.Itens.add("item1");
-		
-	}
-	
-	//TODO
-	public void addItem (String Item) {
-		
-	}
-	
-	//TODO
-	public void removeItem(int index) {
 		
 	}
 	
@@ -59,50 +50,71 @@ public class Heroi extends Prop {
 	//depois realiza o ataque
 	//TODO
 	private void ataca(Mapa mapa) {
+		int ataque = 0, bonus = 0;
+		Dice dado = new Dice();
+		
+		if(atualArma1 != null) {
+			bonus = atualArma1.getBonus();
+		}
+		else if(atualArma2 != null) {
+			bonus = atualArma2.getBonus();
+		}
+		
+		ataque = dadosAtaque + bonus;
+		
 		for (int i = -5 ; i < 6 ; i++) {
 			if (mapa.getSurroudings(0, i) != null) {
-				if (atualArma1.ehLongoAlcance() || atualArma2.ehLongoAlcance()) {
+			
+			//testa ataque a longa distancia para a horizontal
+				if (atacaLonge()) {
 					try {
-						Dice dado = new Dice();
 						Monstro alvo = (Monstro)mapa.getSurroudings(0, i);
-						int ataque = dadosAtaque + atualArma1.getBonus();
 						alvo.sofreDano(dado.rollAttack(ataque));
+						System.out.println("Voce atacou um monstro a longa distancia em y, com i = "+i);
 					}
 					catch(Exception e) {
 					}
 				}
-				else if (i <= 1) {
+				
+			//testa ataque a longa distancia para a horizontal
+				else if (i <= 1 && i >= -1) {
 					try {
-						Dice dado = new Dice();
 						Monstro alvo = (Monstro)mapa.getSurroudings(0, i);
-						int ataque = dadosAtaque + atualArma1.getBonus();
 						alvo.sofreDano(dado.rollAttack(ataque));
+						System.out.println("Voce atacou um monstro a curta distancia em y, com i = "+i);
 					}
 					catch(Exception e) {
 					}
 				}
 			}
 			else if (mapa.getSurroudings(i, 0) != null) {
-				if (atualArma1.ehLongoAlcance() || atualArma2.ehLongoAlcance()) {
+			
+		//testa ataque a longa distancia para a vertical
+				if (atacaLonge()) {
 					try {
-						Dice dado = new Dice();
-						Monstro alvo = (Monstro)mapa.getSurroudings(0, i);
-						int ataque = dadosAtaque + atualArma1.getBonus();
+						Monstro alvo = (Monstro)mapa.getSurroudings(i, 0);
 						alvo.sofreDano(dado.rollAttack(ataque));
+						System.out.println("Voce atacou um monstro a longa distancia em x, com i = "+i);
+					}
+					catch(Exception e) {
+					}
+				}
+		
+		//testa ataque a curta distancia para a vertical
+				else if (i <= 1 && i >= -1) {
+					try {
+						Monstro alvo = (Monstro)mapa.getSurroudings(i, 0);
+						alvo.sofreDano(dado.rollAttack(ataque));
+						System.out.println("Voce atacou um monstro a curta distancia em x, com i = "+i);
 					}
 					catch(Exception e) {
 					}
 				}
 			}
-			else if (i <= 1) {
-				try {
-					Dice dado = new Dice();
-					Monstro alvo = (Monstro)mapa.getSurroudings(0, i);
-					int ataque = dadosAtaque + atualArma1.getBonus();
-					alvo.sofreDano(dado.rollAttack(ataque));
-				}
-				catch(Exception e) {
-				}
+			
+		//checa se o item é consumivel
+			if(ataque != 0) {
+				checaConsumivel();
 			}
 		}
 	}
@@ -144,6 +156,10 @@ public class Heroi extends Prop {
 				System.out.println("Você quer buscar Itens");
 				buscaItem(mapa);
 				return;
+			case "5":
+				System.out.println("Você quer buscar Itens");
+				usaMagia(mapa);
+				return;
 			default:
 				return;
 		}
@@ -182,6 +198,33 @@ public class Heroi extends Prop {
 			EquipaArmadura(Armaduras.get(usar - Itens.size() - Armas.size() - 1));
 		}
 		
+	}
+	
+	private void usaMagia(Mapa mapa) {
+		Scanner magias = new Scanner (System.in);
+		System.out.println();
+		System.out.println("||Suas Magias, para usar uma digite o número dela, ou 0 para sair||");
+		int i = 1;
+		
+		for(Magia magia: Magias) {
+            System.out.println(i++ + " " + magia.getNome());
+        }
+		
+		int usar = magias.nextInt();
+		
+		if(usar == 0) {
+			return;
+		}
+		
+		if(usar <= Magias.size()) {
+			System.out.println("Usou a magia " + Magias.get(usar - 1).getNome());
+			Magias.get(usar - 1).usaMagia(this, mapa);
+			Magias.remove(usar - 1);
+		}
+	}
+	
+	public void addMagia(Magia magia) {
+		Magias.add(magia);
 	}
 	
 	public void movimenta(Mapa mapa) {
@@ -299,6 +342,27 @@ public class Heroi extends Prop {
 	
 	public void recebeDano(int dano) {
 		pontosVida -= dano;
+	}
+	
+	private boolean atacaLonge() {
+		if((atualArma1 != null && atualArma1.ehLongoAlcance()) ||
+				(atualArma2 != null && atualArma2.ehLongoAlcance())) {
+			return true;
+		}
+		return false;
+	}
+	
+	private void checaConsumivel() {
+		if (atualArma1!= null && atualArma1.ehConsumivel()) {
+			System.out.println("Sua arma ficou presa no monstro e foi corroida, equipe outra");
+			Armas.remove(atualArma1);
+			atualArma1 = null;
+		}
+		else if (atualArma2!= null && atualArma2.ehConsumivel()) {
+			System.out.println("Sua arma ficou presa no monstro e foi corroida, equipe outra");
+			Armas.remove(atualArma2);
+			atualArma2 = null;
+		}
 	}
 	
 	

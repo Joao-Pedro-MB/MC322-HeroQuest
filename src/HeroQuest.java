@@ -103,8 +103,11 @@ public class HeroQuest {
 				System.out.print("| Opção 2 - Atacar            |\n");
 				System.out.print("| Opção 3 - Usar Item         |\n");
 				System.out.print("| Opção 4 - Buscar Item       |\n");
+				System.out.print("| Opção 5 - Usar magia        |\n");
 				comando = menu.nextLine();	
-				if(comando.equals("1") || comando.equals("2") || comando.equals("3") || comando.equals("4")) {
+				if(comando.equals("1") || comando.equals("2") || comando.equals("3")
+					|| comando.equals("4") || comando.equals("5")) {
+					
 					prosseguir = true;
 				}
 			}

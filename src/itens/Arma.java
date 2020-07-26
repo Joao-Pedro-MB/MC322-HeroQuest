@@ -26,6 +26,10 @@ public class Arma implements Itens{
 		return this.duasMaos;
 	}
 	
+	public boolean ehConsumivel(){
+		return this.consumivel;
+	}
+	
 	public boolean ehRestrita() {
 		return feiticeiroRestrito;
 	}

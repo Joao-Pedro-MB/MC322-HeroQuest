@@ -1,7 +1,7 @@
 package itens;
 
 
-interface Itens {
+public interface Itens {
 	
 	String getNome();
 }

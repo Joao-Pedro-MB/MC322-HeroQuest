@@ -3,14 +3,19 @@ import java.util.Scanner;
 import mapa.Mapa;
 import heroi.Heroi;
 
-public class Teleporte {
+public class Teleporte implements Magia {
 	
-	Teleporte(){};
+	public Teleporte(){};
 	
-	void usaMagia(Mapa mapa, Heroi heroi) {
+	public String getNome() {
+		return "Teleporte";
+	}
+	
+	public void usaMagia(Heroi heroi, Mapa mapa) {
 		Scanner pos = new Scanner (System.in);
 		
 		try {
+			System.out.println("Digite a posição x e y do seu teleporte:");
 			int x = pos.nextInt();
 			int y = pos.nextInt();
 			mapa.teleportaHeroi(x, y);
@@ -18,6 +23,6 @@ public class Teleporte {
 		catch(Exception e) {
 			System.out.println("Input inválido");
 		}
-		pos.close();
+		//pos.close();
 	}
 }

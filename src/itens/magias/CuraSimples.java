@@ -1,15 +1,20 @@
 package itens.magias;
 import heroi.Dice;
 import heroi.Heroi;
+import mapa.Mapa;
 
-public class CuraSimples {
+public class CuraSimples implements Magia {
 	Dice cura;
 	
-	CuraSimples(){
+	public CuraSimples(){
 		cura = new Dice();
 	}
 	
-	void UsaMagia(Heroi heroi) {
+	public String getNome() {
+		return "Cura Simples";
+	}
+	
+	public void usaMagia(Heroi heroi, Mapa mapa) {
 		int pontos = cura.rollDice(1);
 		heroi.addVida(pontos);
 	}

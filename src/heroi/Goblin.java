@@ -10,8 +10,9 @@ import itens.Arma;
 public class Goblin extends Monstro{
 	
 	public Goblin (int x, int y) {
-		super(x,y,"Goblin", "GG", 2, 1, 1, 1, 10, "arma");
+		super(x,y,"Goblin", "GG", 2, 1, 1, 1, 10);
 		Arma punhal = new Punhal();
+		this.equipaArma(punhal);
 	}
 	
 	@Override

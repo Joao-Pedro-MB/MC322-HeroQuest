@@ -8,8 +8,8 @@ import mapa.*;
 
 
 public class Personagem extends Prop {
-	private String nome, classe, simbolo;
-	private int dadosAtaque, dadosDefesa, pontosVida, pontosInteligencia;
+	String nome, classe, simbolo;
+	int dadosAtaque, dadosDefesa, pontosVida, pontosInteligencia;
 	
 	
 	public Personagem(int x, int y, String nome, String simbolo, String classe, int dadosAtaque, int dadosDefesa, int pontosVida, int pontosInteligencia) {

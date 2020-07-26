@@ -2,7 +2,7 @@ package heroi;
 
 
 import java.util.Random;
-
+import itens.Arma;
 import mapa.Mapa;
 
 
@@ -12,68 +12,82 @@ public class Monstro extends Personagem {
 	private int ataque, defesa, pontosVida, inteligencia;
 	protected int movimento;
 	private String arma;
+	private int movimento;
+	private Arma arma;
 	private boolean vivo;
 	
-	public Monstro(int x, int y, String nome, String simbolo, int ataque, int defesa, int pontosVida, int inteligencia, int movimento, String arma) {
+	public Monstro(int x, int y, String nome, String simbolo, int ataque, int defesa, int pontosVida, int inteligencia, int movimento) {
 		super(x, y, nome, simbolo, "monstro", ataque, defesa, pontosVida, inteligencia);
-		this.nome = nome;
-		this.simbolo = simbolo;
-		this.ataque = ataque;
-		this.defesa = defesa;
-		this.pontosVida = pontosVida;
-		this.inteligencia = inteligencia;
 		this.movimento = movimento;
-		this.arma = arma;
 		this.vivo = true;
 	}
 	
 	private void ataca(Mapa mapa) {
+		int ataque = 0, bonus = 0;
+		Dice dado = new Dice();
+		
+		if(arma != null) {
+			bonus = arma.getBonus();
+		}
+		
+		ataque = dadosAtaque + bonus;
+		
 		for (int i = -5 ; i < 6 ; i++) {
 			if (mapa.getSurroudings(0, i) != null) {
-				if (arma.ehLongoAlcance()) {
+			
+			//testa ataque a longa distancia para a horizontal
+				if (atacaLonge()) {
 					try {
-						Dice dado = new Dice();
-						Heroi alvo = (Heroi)mapa.getSurroudings(0, i);
-						int ataque = ataque + arma.getBonus();
+						Monstro alvo = (Monstro)mapa.getSurroudings(0, i);
 						alvo.sofreDano(dado.rollAttack(ataque));
+						System.out.println("Voce atacou um monstro a longa distancia em y, com i = "+i);
 					}
 					catch(Exception e) {
 					}
 				}
-				else if (i <= 1) {
+				
+			//testa ataque a longa distancia para a horizontal
+				else if (i <= 1 && i >= -1) {
 					try {
-						Dice dado = new Dice();
-						Heroi alvo = (Heroi)mapa.getSurroudings(0, i);
-						int ataque = ataque + arma.getBonus();
+						Monstro alvo = (Monstro)mapa.getSurroudings(0, i);
 						alvo.sofreDano(dado.rollAttack(ataque));
+						System.out.println("Voce atacou um monstro a curta distancia em y, com i = "+i);
 					}
 					catch(Exception e) {
 					}
 				}
 			}
 			else if (mapa.getSurroudings(i, 0) != null) {
-				if (arma.ehLongoAlcance()) {
+			
+		//testa ataque a longa distancia para a vertical
+				if (atacaLonge()) {
 					try {
-						Dice dado = new Dice();
-						Heroi alvo = (Heroi)mapa.getSurroudings(0, i);
-						int ataque = ataque + arma.getBonus();
+						Monstro alvo = (Monstro)mapa.getSurroudings(i, 0);
 						alvo.sofreDano(dado.rollAttack(ataque));
+						System.out.println("Voce atacou um monstro a longa distancia em x, com i = "+i);
 					}
 					catch(Exception e) {
 					}
 				}
-				else if (i <= 1) {
+		
+		//testa ataque a curta distancia para a vertical
+				else if (i <= 1 && i >= -1) {
 					try {
-						Dice dado = new Dice();
-						Heroi alvo = (Heroi)mapa.getSurroudings(0, i);
-						int ataque = ataque + arma.getBonus();
+						Monstro alvo = (Monstro)mapa.getSurroudings(i, 0);
 						alvo.sofreDano(dado.rollAttack(ataque));
+						System.out.println("Voce atacou um monstro a curta distancia em x, com i = "+i);
 					}
 					catch(Exception e) {
 					}
 				}
 			}
+			
+		//checa se o item é consumivel
+			if(ataque != 0) {
+				checaConsumivel();
+			}
 		}
+	}
 		
 		
 	public void movimenta(Mapa mapa) {
@@ -118,7 +132,10 @@ public class Monstro extends Personagem {
 	
 	public void sofreDano(int dano) {
 		int defesa = defende();
+		System.out.println("Vida Antes " + pontosVida);
 		this.pontosVida-=(dano-defesa);
+		System.out.println("Alvo recebeu " + dano + " de dano e defendeu " + defesa +" pontos");
+		System.out.println("Vida Depois " + pontosVida);
 		if(this.pontosVida < 0) {
 			this.vivo = false;
 		}
@@ -130,9 +147,27 @@ public class Monstro extends Personagem {
 	
 	private int defende() {
 		Dice defende = new Dice();
-		return defende.rollMonsterDefense(defesa);
+		return defende.rollMonsterDefense(dadosDefesa);
 	}
 	
+	public void equipaArma(Arma arma) {
+		if(this.arma == null) {
+			this.arma = arma;
+		}
+	}
 	
+	private void checaConsumivel() {
+		if (arma!= null && arma.ehConsumivel()) {
+			System.out.println("Sua arma ficou presa no monstro e foi corroida, equipe outra");
+			arma = null;
+		}
+	}
 	
+	private boolean atacaLonge() {
+		if(arma != null && arma.ehLongoAlcance()) {
+			return true;
+		}
+		return false;
+	}
+		
 }
