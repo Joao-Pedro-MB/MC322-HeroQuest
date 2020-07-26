@@ -4,6 +4,7 @@ import heroi.Monstro;
 import bauEarmadilha.*;
 import java.lang.IndexOutOfBoundsException;
 import exception.IllegalMoveException;
+import java.util.ArrayList;
 
 public class Mapa {
 	Prop[][] map;
@@ -13,6 +14,7 @@ public class Mapa {
 	int lineLength;
 	int collumnLength;
 	int heroiX = 0, heroiY = 0;
+	ArrayList<Monstro> monstros = new ArrayList();
 	
 	public Mapa(int lineLength, int collumnLength){
 		this.lineLength = lineLength;
@@ -57,8 +59,9 @@ public class Mapa {
 	}
 	
 	public void includeMonstro(int x, int y) {
-		Prop monstro = new Monstro ("monstro","MM", 2, 1, 1, 1, "punho");
-		map[y][x] = monstro;
+		Monstro monstro = new Monstro (y,x-3,"monstro","MM", 2, 1, 1, 1, 6, "punho");
+		monstros.add(monstro);
+		map[y][x-3] = monstro;
 	}
 	
 	//adiciona paredes ao mapa
@@ -168,6 +171,66 @@ public class Mapa {
 	
 	public void removeHeroi() {
 		map[heroiY][heroiX] = null;
+	}
+	
+	public int addMonstro(int[] pos, Monstro monstro) {
+		String move="";
+		int id = monstros.indexOf(monstro);
+		monstros.get(id).posX += pos[1];
+		monstros.get(id).posY += pos[0];
+		
+		if(pos[1] == 1) {
+			move = "direita";
+		}
+		else if(pos[1] == -1) {
+			move = "esquerda";
+		}
+		else if(pos[0] == 1) {
+			move = "baixo";
+		}
+		else if(pos[0] == -1) {
+			move = "cima";
+		}
+		
+		try {
+			if(map[monstros.get(id).posY][monstros.get(id).posX] != null) {
+				throw new IllegalMoveException();
+			}
+			else if((move.equals("baixo") && wallmap[monstros.get(id).posY-1][monstros.get(id).posX].equals("baixo")) || (move.equals("baixo") && wallmap[monstros.get(id).posY-1][monstros.get(id).posX].equals("baixolado"))) {
+				throw new IllegalMoveException();
+			}
+			else if((move.equals("direita") && wallmap[monstros.get(id).posY][monstros.get(id).posX-1].equals("lado")) || (move.equals("direita") && wallmap[monstros.get(id).posY][monstros.get(id).posX-1].equals("baixolado"))) {
+				throw new IllegalMoveException();
+			}
+			else if((move.equals("cima") && wallmap[monstros.get(id).posY][monstros.get(id).posX].equals("baixo")) || (move.equals("cima") && wallmap[monstros.get(id).posY][monstros.get(id).posX].equals("baixolado"))) {
+				throw new IllegalMoveException();
+			}
+			else if((move.equals("esquerda") && wallmap[monstros.get(id).posY][monstros.get(id).posX].equals("lado")) || (move.equals("esquerda") && wallmap[monstros.get(id).posY][monstros.get(id).posX].equals("baixolado"))) {
+				throw new IllegalMoveException();
+			}
+			map[monstros.get(id).posY][monstros.get(id).posX] = monstro;
+		}
+		catch(Exception e) {
+			monstros.get(id).posX -= pos[1];
+			monstros.get(id).posY -= pos[0];
+			map[monstros.get(id).posY][monstros.get(id).posX] = monstro;
+			//printHeroMapAAA();			
+			return 1;
+ 		}
+		//printHeroMapAAA();	
+		return 0;
+	}
+	
+	public void removeMonstro(Monstro monstro) {
+		int id = monstros.indexOf(monstro);
+		map[monstros.get(id).posY][monstros.get(id).posX] = null;
+	}
+	
+	public void movimentaMonstros() {
+		for(int i=0; i<monstros.size(); i++) {
+			monstros.get(i).movimenta(this);
+		}
+		refreshHeroMap();
 	}
 	
 	public void teleportaHeroi(int x, int y) {

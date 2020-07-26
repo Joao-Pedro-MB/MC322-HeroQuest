@@ -71,14 +71,22 @@ public class HeroQuest {
 //rodadas---------------------------------------------------------
 		while(comando != "e" && ruuning) {
 			//lê o movimento do jogador
-			System.out.println("Qual sua ação?:");
-			System.out.print("| Opção 1 - Movimentar        |\n");
-			System.out.print("| Opção 2 - Atacar            |\n");
-			System.out.print("| Opção 3 - Usar Item         |\n");
-			System.out.print("| Opção 4 - Buscar Item       |\n");
-			comando = menu.nextLine();	
+			boolean prosseguir = false;
+			while(prosseguir != true) {
+				System.out.println("Qual sua ação?:");
+				System.out.print("| Opção 1 - Movimentar        |\n");
+				System.out.print("| Opção 2 - Atacar            |\n");
+				System.out.print("| Opção 3 - Usar Item         |\n");
+				System.out.print("| Opção 4 - Buscar Item       |\n");
+				comando = menu.nextLine();	
+				if(comando.equals("1") || comando.equals("2") || comando.equals("3") || comando.equals("4")) {
+					prosseguir = true;
+				}
+			}
 			//movimenta o heroi
 			heroi.move(comando, mapa);
+			//movimento os monstros
+			mapa.movimentaMonstros();
 			//imprime Mapa
 			mapa.printMap();
 			//imprime status do herói

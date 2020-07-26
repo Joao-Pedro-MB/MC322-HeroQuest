@@ -52,6 +52,7 @@ public class Heroi extends Prop {
 				mapa.revelaArmadilha(i, 0);
 			}
 		}
+		mapa.refreshHeroMap();
 	}
 
 	//avalia uma distancia pré definida na horizontal e vertical
