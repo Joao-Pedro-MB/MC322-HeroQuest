@@ -338,9 +338,7 @@ public class RandomMap {
 		for(int i=0; i<19; i++) {
 			for(int j=0; j<26; j++) {
 				posicoesocupadas[i][j] = 0;
-				System.out.printf(posicoesocupadas[i][j]+" ");
 			}
-			System.out.println("");
 		}
 		posicoesocupadas[0][0] = 1;
 		
@@ -405,13 +403,6 @@ public class RandomMap {
 					mapa.includeEsqueletoMago(randX,randY);
 				}
 			}
-		}
-		
-		for(int i=0; i<19; i++) {
-			for(int j=0; j<26; j++) {
-				System.out.printf(posicoesocupadas[i][j]+" ");
-			}
-			System.out.println("");
 		}
 		
 	}

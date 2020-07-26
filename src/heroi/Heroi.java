@@ -385,10 +385,4 @@ public class Heroi extends Prop {
 		}
 	}
 	
-	
-	//public void removePocao(Pocao pocao) {
-	//	if (Pocoes.contains(pocao)) {
-	//		Pocoes.remove(pocao);
-	//	}
-	//}
 }

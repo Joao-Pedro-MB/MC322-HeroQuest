@@ -33,22 +33,6 @@ public class Mapa {
 		}
 	}
 	
-	/*adiciona itens ao mapa
-	public void includeItem(Prop item) {
-		
-		int x = item.getPosX();
-		int y = item.getPosY();
-		
-		try {
-			map[y][x] = item;
-		}
-		catch(ArrayIndexOutOfBoundsException e) {
-			
-			System.out.println("Um item foi posicionado fora do mapa:");
-			item.print();
-		}
-	}*/
-	
 	public void includeBau(int x, int y) {
 		Prop bau = new Baus(x, y);
 		map[y][x] = bau;
@@ -181,12 +165,10 @@ public class Mapa {
 			heroiX -= pos[1];
 			heroiY -= pos[0];
 			map[heroiY][heroiX] = heroi;
-			refreshHeroMap();
-			//printHeroMapAAA();			
+			refreshHeroMap();		
 			return 1;
  		}
-		refreshHeroMap();
-		//printHeroMapAAA();	
+		refreshHeroMap();	
 		return 0;
 	}
 	
@@ -234,11 +216,9 @@ public class Mapa {
 		catch(Exception e) {
 			monstros.get(id).posX -= pos[1];
 			monstros.get(id).posY -= pos[0];
-			map[monstros.get(id).posY][monstros.get(id).posX] = monstro;
-			//printHeroMapAAA();			
+			map[monstros.get(id).posY][monstros.get(id).posX] = monstro;			
 			return 1;
- 		}
-		//printHeroMapAAA();	
+ 		}	
 		return 0;
 	}
 	
@@ -274,18 +254,6 @@ public class Mapa {
 		addHeroi(pos, heroi);
 	}
 	
-	/*atualiza a posição do jogado no mapa
-	//public void movePlayer(int[] move, Prop heroi) {
-	//	try {
-	//		map[move[0]][move[1]] = heroi;
-	//	}
-	//	catch(IndexOutOfBoundsException e){
-	//		System.out.println("Movimento inválido");
-	//		return;
-	//	}
-			
-	}*/
-	
 	public void refreshHeroMap() {
 		for (int i = 0 ; i < lineLength ; i++) {
 			for (int j = 0 ; j < collumnLength ; j++) {
@@ -311,8 +279,7 @@ public class Mapa {
 			}
 			else {
 				j++;
-			}
-			
+			}	
 		}
 		
 		//Visão horizontal para a esquerda
@@ -382,25 +349,6 @@ public class Mapa {
 		}
 		
 	}
-	
-	public void printHeroMapAAA() {
-		for (int i = 0 ; i < lineLength ; i++) {
-			for (int j = 0 ; j < collumnLength ; j++) {
-				//System.out.printf(roomsidentifier[i][j]+" ");
-			
-				if(heromap[i][j] == true) {
-					System.out.printf("1 ");
-				}
-				else {
-					System.out.printf("0 ");
-				}
-				
-			}
-			System.out.println(" ");
-		}
-		
-	}
-	
 	
 	public boolean haswon() {
 		boolean win = false;

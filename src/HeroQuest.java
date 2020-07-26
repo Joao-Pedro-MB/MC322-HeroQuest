@@ -25,7 +25,6 @@ public class HeroQuest {
 			classe = 1;
 			System.out.printf("Vejo que não segue instruções, pois entã será um Bárbaro");
 		}
-		System.out.println("A"+classe+"A");
 		System.out.println();
 		System.out.print("##-Qual o nome do Personagem?-##");
 		String buffer = menu.nextLine();
