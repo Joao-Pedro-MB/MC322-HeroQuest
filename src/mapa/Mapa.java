@@ -401,12 +401,26 @@ public class Mapa {
 		
 	}
 	
-	public boolean jogoterminou() {
+	
+	public boolean haswon() {
+		boolean win = false;
 		int vivos = MonstrosRestantes();
 		System.out.println("Restam "+vivos+" monstros vivos");
 		if(vivos == 0) {
+			win = true;
 			return true;
 		}
+		return false;
+	}
+	
+	public boolean haslost(Heroi heroi) {
+		boolean loss = false;
+		boolean heroivivo = heroi.estavivo();
+		if(!heroivivo) {
+			loss = true;
+			return true;
+		}
+		
 		return false;
 	}
 	

@@ -123,8 +123,9 @@ public class HeroQuest {
 			//imprime status do herói
 			heroi.printStatus();
 			//imprime quanto falta para o jogo acabar
-			boolean endgame = mapa.jogoterminou();
-			if(endgame) {
+			boolean haslost = mapa.haslost(heroi);
+			boolean haswon = mapa.haswon();
+			if(haswon || haslost) {
 				running = false;
 			}
 		}
@@ -132,13 +133,22 @@ public class HeroQuest {
 		
 		
 		//Fim de jogo
-		System.out.print("\n \n \n");
-		System.out.print("| ▓▓    ▓▓  ▓▓  ▓▓   ▓▓  |\n");
-		System.out.print("| ▓▓ ▓▓ ▓▓  ▓▓  ▓▓▓▓ ▓▓  |\n");
-		System.out.print("| ▓▓ ▓▓ ▓▓  ▓▓  ▓▓ ▓▓▓▓  |\n");
-		System.out.print("| ▓▓▓  ▓▓▓  ▓▓  ▓▓  ▓▓▓  |\n");
-		System.out.print("| ▓▓    ▓▓  ▓▓  ▓▓   ▓▓  |\n");
-		
+		if(mapa.haslost(heroi)) {
+			System.out.print("\n \n \n");
+			System.out.print("| ▓▓      ▓▓▓▓▓▓  ▓▓▓▓▓▓  ▓▓▓▓▓▓  |\n");
+			System.out.print("| ▓▓      ▓▓  ▓▓  ▓▓      ▓▓      |\n");
+			System.out.print("| ▓▓      ▓▓  ▓▓  ▓▓▓▓▓▓  ▓▓▓▓▓▓  |\n");
+			System.out.print("| ▓▓      ▓▓  ▓▓      ▓▓      ▓▓  |\n");
+			System.out.print("| ▓▓▓▓▓▓  ▓▓▓▓▓▓  ▓▓▓▓▓▓  ▓▓▓▓▓▓  |\n");
+		}
+		else if(mapa.haswon()) {
+			System.out.print("\n \n \n");
+			System.out.print("| ▓▓    ▓▓  ▓▓  ▓▓   ▓▓  |\n");
+			System.out.print("| ▓▓ ▓▓ ▓▓  ▓▓  ▓▓▓▓ ▓▓  |\n");
+			System.out.print("| ▓▓ ▓▓ ▓▓  ▓▓  ▓▓ ▓▓▓▓  |\n");
+			System.out.print("| ▓▓▓  ▓▓▓  ▓▓  ▓▓  ▓▓▓  |\n");
+			System.out.print("| ▓▓    ▓▓  ▓▓  ▓▓   ▓▓  |\n");
+		}
 		
 		
 		

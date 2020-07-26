@@ -131,7 +131,7 @@ public class Monstro extends Personagem {
 		}
 		System.out.println("Alvo recebeu " + dano + " de dano e defendeu " + defesa +" pontos");
 		System.out.println("Vida Depois " + pontosVida);
-		if(this.pontosVida < 0) {
+		if(this.pontosVida <= 0) {
 			this.vivo = false;
 		}
 	}

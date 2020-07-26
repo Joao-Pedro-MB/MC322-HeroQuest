@@ -19,6 +19,7 @@ public class Heroi extends Prop {
 	private String classe;
 	private Arma atualArma1 = null, atualArma2 = null;
 	private Armadura atualArmadura = null;
+	private boolean vivo;
 	
 	public Heroi(String nome, String classe, int dadosAtaque, int dadosDefesa, int pontosVida, int pontosInteligencia) {
 		super("HH", 0, 0);
@@ -29,6 +30,7 @@ public class Heroi extends Prop {
 		this.pontosVida = pontosVida;
 		this.pontosInteligencia = pontosInteligencia;
 		this.Itens.add("item1");
+		this.vivo = true;
 		
 	}
 	
@@ -126,6 +128,14 @@ public class Heroi extends Prop {
 		if(dano > defesa) {
 			this.pontosVida-=(dano-defesa);
 		}
+		
+		if(this.pontosVida <= 0) {
+			this.vivo = false;
+		}
+	}
+	
+	public boolean estavivo() {
+		return this.vivo;
 	}
 	
 	private int defende() {
