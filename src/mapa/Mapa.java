@@ -474,6 +474,14 @@ public class Mapa {
 			return;
 		}
 	}
+	
+	public int getHeroiX() {
+		return heroiX;
+	}
+	
+	public int getHeroiY() {
+		return heroiY;
+	}
 }
 
 

@@ -10,7 +10,7 @@ public class Monstro extends Personagem {
 	private String nome;
 	private String simbolo;
 	private int ataque, defesa, pontosVida, inteligencia;
-	private int movimento;
+	protected int movimento;
 	private String arma;
 	private boolean vivo;
 	
@@ -75,11 +75,13 @@ public class Monstro extends Personagem {
 			}
 		}
 		
+		
 	public void movimenta(Mapa mapa) {
 		Random rand = new Random();
 		int moves = rand.nextInt(this.movimento);
 		System.out.println("Monstro se movendo");
 		
+		int contmovimentoimpossivel=0;
 		for (int i = moves ; i >= 0 ; i--) {
 			moves = rand.nextInt(4);
 			mapa.removeMonstro(this);
@@ -102,6 +104,15 @@ public class Monstro extends Personagem {
 			}
 			int movimentoImpossivel = mapa.addMonstro(pos, this); //Retorna 1 caso não seja possível movimentar
 			i += movimentoImpossivel;
+			if(movimentoImpossivel == 1) {
+				contmovimentoimpossivel++;
+			}
+			else {
+				contmovimentoimpossivel = 0;
+			}
+			if(contmovimentoimpossivel == 20) {
+				i = 0;
+			}
 		}		
 	}
 	
