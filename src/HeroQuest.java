@@ -59,9 +59,34 @@ public class HeroQuest {
 		Heroi heroi = criarPersonagem();
 		mapa.addHeroi(pos, heroi);
 		
-		DefaultMap defaultmap = new DefaultMap(mapa);
-		defaultmap.generateDefaultMap();
+		int mapaopcao;
+		System.out.print("\n");
+		System.out.print("##----Em qual mapa deseja jogar-----##\n");
+		System.out.print("| Opção 1 - Mapa Default        |\n");
+		System.out.print("| Opção 2 - Mapa Randômico      |\n");
+		System.out.print("Digite uma opção: ");
+		try {
+			mapaopcao = menu.nextInt();
+			if(mapaopcao != 1 && mapaopcao != 2) {
+				throw new InputMismatchException();
+			}
+		}
+		catch(InputMismatchException e) {
+			mapaopcao = 1;
+			System.out.println("Valor inválido. Jogará com o mapa Default");
+		}
+		System.out.println("");
 		
+		if(mapaopcao == 1 ) {
+			DefaultMap defaultmap = new DefaultMap(mapa);
+			defaultmap.generateDefaultMap();
+		}
+		else {
+			RandomMap randommap = new RandomMap(mapa);
+			randommap.generateRandomMap();
+		}
+
+		String buffer = menu.nextLine();
 		
 		mapa.printMap();
 		heroi.printStatus();
