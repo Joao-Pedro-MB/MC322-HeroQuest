@@ -120,6 +120,11 @@ public class HeroQuest {
 					//imprime Mapa
 					mapa.printMap();
 				}
+				
+				boolean haswon = mapa.haswon();
+				if(haswon) {
+					running = false;
+				}
 			}
 			//movimento os monstros
 			mapa.movimentaMonstros();
