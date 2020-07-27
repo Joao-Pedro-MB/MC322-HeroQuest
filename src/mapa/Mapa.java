@@ -239,6 +239,15 @@ public class Mapa {
 		refreshHeroMap();
 	}
 	
+	public void atualizaMonstros() {
+		for(int i=0; i<monstros.size(); i++) {
+			if(!monstros.get(i).estavivo()) {
+				removeMonstro(monstros.get(i));
+			}
+		}
+		refreshHeroMap();
+	}
+	
 	public void teleportaHeroi(int x, int y) {
 		try {
 			map[y][x] = null;

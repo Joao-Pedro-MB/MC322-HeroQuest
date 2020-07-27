@@ -114,6 +114,12 @@ public class HeroQuest {
 				}
 				//movimenta o heroi
 				heroi.move(comando, mapa);
+				
+				if(i == 0) {
+					mapa.atualizaMonstros();
+					//imprime Mapa
+					mapa.printMap();
+				}
 			}
 			//movimento os monstros
 			mapa.movimentaMonstros();
