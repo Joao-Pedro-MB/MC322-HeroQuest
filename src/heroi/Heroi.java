@@ -19,6 +19,7 @@ public class Heroi extends Personagem {
 	
 	public Heroi(String nome, String classe, int dadosAtaque, int dadosDefesa, int pontosVida, int pontosInteligencia) {
 		super(0, 0, nome, "HH", classe, dadosAtaque, dadosDefesa, pontosVida, pontosInteligencia);
+		vivo = true;
 
 		
 	}
@@ -253,8 +254,6 @@ public class Heroi extends Personagem {
 			}
 			else if(move.compareTo("p") == 0) {
 				i= 0;
-			}
-			else if(move.compareTo("e") == 0) {
 				mapa.addHeroi(pos, this);
 				mapa.printMap();
 				return;
