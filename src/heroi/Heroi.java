@@ -7,30 +7,19 @@ import mapa.*;
 
 
 
-public class Heroi extends Prop {
-	private String nome;
-	private int dadosAtaque, dadosAtaqueArma, dadosDefesa;
-	private int pontosVida, pontosInteligencia, moedasOuro;
-	int totalArmas = 0, totalMagias = 0;
+public class Heroi extends Personagem {
+
+	private int moedasOuro;
 	private ArrayList<Arma> Armas = new ArrayList<Arma>();
 	private ArrayList<Armadura> Armaduras = new ArrayList<Armadura>();
-	private ArrayList<String> Itens = new ArrayList<String>();
 	private ArrayList<Magia> Magias = new ArrayList<Magia>();
-	private String classe;
 	private Arma atualArma1 = null, atualArma2 = null;
 	private Armadura atualArmadura = null;
 	private boolean vivo;
 	
 	public Heroi(String nome, String classe, int dadosAtaque, int dadosDefesa, int pontosVida, int pontosInteligencia) {
-		super("HH", 0, 0);
-		this.classe = classe;
-		this.nome = nome; 
-		this.dadosAtaque = dadosAtaque;
-		this.dadosDefesa = dadosDefesa;
-		this.pontosVida = pontosVida;
-		this.pontosInteligencia = pontosInteligencia;
-		this.Itens.add("item1");
-		this.vivo = true;
+		super(0, 0, nome, "HH", classe, dadosAtaque, dadosDefesa, pontosVida, pontosInteligencia);
+
 		
 	}
 	
@@ -188,9 +177,6 @@ public class Heroi extends Prop {
 		System.out.println("||Seu inventário, para usar um item digite o número dele, ou 0 para sair||");
 		int i = 1;
 		
-		for(String item:Itens) {
-            System.out.println(i++ + " " + item);
-        } 
 		for(Arma arma:Armas) {
             System.out.println(i++ + " " + arma.getNome());
         }
@@ -202,16 +188,13 @@ public class Heroi extends Prop {
 		if(usar == 0) {
 			return;
 		}
-		else if(usar <= Itens.size()) {
-			System.out.println("Você usou " + Itens.get(i - 1));
+		else if(usar <= Armas.size()) {
+			System.out.println("Você usou " + Armas.get(usar - 1).getNome());
+			EquipaArma(Armas.get(usar - 1));
 		}
-		else if(usar <= Itens.size() + Armas.size()) {
-			System.out.println("Você usou " + Armas.get(usar - Itens.size() - 1).getNome());
-			EquipaArma(Armas.get(usar - Itens.size() - 1));
-		}
-		else if(usar <= Itens.size() + Armas.size() + Armaduras.size()) {
-			System.out.println("Você usou " + Armaduras.get(usar - Itens.size() - Armas.size() - 1).getNome());
-			EquipaArmadura(Armaduras.get(usar - Itens.size() - Armas.size() - 1));
+		else if(usar <= Armas.size() + Armaduras.size()) {
+			System.out.println("Você usou " + Armaduras.get(usar - Armas.size() - 1).getNome());
+			EquipaArmadura(Armaduras.get(usar - Armas.size() - 1));
 		}
 		
 	}
@@ -299,7 +282,7 @@ public class Heroi extends Prop {
 		}
 	}
 	
-	public boolean podeUsar(Arma arma) {
+	private boolean podeUsar(Arma arma) {
 		if(!arma.ehRestrita() || classe.compareTo("Feiticeiro") != 0) {
 			return true;
 		}

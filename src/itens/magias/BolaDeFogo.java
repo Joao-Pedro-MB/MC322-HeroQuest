@@ -1,6 +1,7 @@
 package itens.magias;
 import heroi.Heroi;
 import heroi.Monstro;
+import itens.Magia;
 import mapa.Mapa;
 
 public class BolaDeFogo implements Magia {

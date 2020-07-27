@@ -4,6 +4,7 @@ import java.util.Random;
 import mapa.Mapa;
 import heroi.Heroi;
 import heroi.Monstro;
+import itens.Magia;
 
 public class Teleporte implements Magia {
 	

@@ -2,7 +2,7 @@ package heroi;
 import java.util.ArrayList;
 import java.util.Random;
 import itens.Arma;
-import itens.magias.Magia;
+import itens.Magia;
 import mapa.Mapa;
 
 

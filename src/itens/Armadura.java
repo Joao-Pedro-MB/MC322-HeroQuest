@@ -12,7 +12,7 @@ public class Armadura implements Itens{
 		this.mageRestricted = mageRestricted;
 	}
 	
-	int getBonus() {
+	public int getBonus() {
 		return dadosDefesa;
 	}
 	

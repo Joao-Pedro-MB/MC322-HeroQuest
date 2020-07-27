@@ -2,6 +2,7 @@ package itens.magias;
 import heroi.Dice;
 import heroi.Heroi;
 import heroi.Monstro;
+import itens.Magia;
 import mapa.Mapa;
 
 public class CuraSimples implements Magia {

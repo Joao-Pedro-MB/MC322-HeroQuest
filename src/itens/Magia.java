@@ -1,4 +1,4 @@
-package itens.magias;
+package itens;
 import heroi.*;
 import mapa.*;
 
